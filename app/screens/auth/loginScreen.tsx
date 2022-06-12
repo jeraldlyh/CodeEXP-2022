@@ -23,12 +23,11 @@ const LoginScreen = ({ navigation }: TScreenProp) => {
 
     const handleLogin = async () => {
         try {
-            const response = await AuthService.loginUser(username, password);
+            await AuthService.loginUser(username, password);
         } catch (error) {
             const errorResponse = (error as any).response;
-            console.log(typeof errorResponse.status, errorResponse.status);
+
             if (errorResponse.status === 401) {
-                console.log("setting");
                 setErrorMessage(errorResponse.message || "Invalid credentials");
             }
         }
