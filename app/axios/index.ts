@@ -3,7 +3,7 @@ import axios from "axios";
 const IS_PRODUCTION = false;
 const baseURL = IS_PRODUCTION
     ? "https://codeexp-2022.herokuapp.com/"
-    : "http://localhost:8000/api";
+    : "http://192.168.1.3:8000/api";
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
         "Content-Type": "application/json",
         Accept: "*/*",
     },
-    withCredentials: true
+    withCredentials: true,
 });
 
 // JWT tokens are being set as HTTP-only cookies
