@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import * as firebase from "firebase-admin";
+import { v4 as uuidv4 } from "uuid";
 import { User, userConverter } from "src/users/users.model";
+import { CreateUserResponse } from "src/users/users.type";
 
 @Injectable()
 export class UsersRepository {
@@ -15,5 +17,20 @@ export class UsersRepository {
             .get();
 
         return user.data();
+    }
+
+    async create(username: string, password: string, email: string): Promise<CreateUserResponse> {
+        const id = uuidv4();
+
+        await firebase.firestore().collection(this.rootCollection).doc(username).set({
+            id,
+            username,
+            password,
+            email,
+            points: 0,
+            dateJoined: firebase.firestore.Timestamp.now(),
+        });
+
+        return { username, id };
     }
 }

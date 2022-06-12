@@ -1,10 +1,14 @@
 import { PassportStrategy } from "@nestjs/passport";
 import { ExtractJwt, Strategy } from "passport-jwt";
+import { Request } from "express";
 
 export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor() {
         super({
-            jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+            jwtFromRequest: ExtractJwt.fromExtractors([
+                JwtStrategy.extractJwt,
+                ExtractJwt.fromAuthHeaderAsBearerToken(),
+            ]),
             ignoreExpiration: false,
             secretOrKey: process.env.JWT_SECRET || "CODE_EXP",
         });
@@ -12,5 +16,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
     async validate(payload: any) {
         return { userId: payload.sub, username: payload.username };
+    }
+
+    private static extractJwt(request: Request): string | null {
+        if (request.cookies && "accessToken" in request.cookies) {
+            return request.cookies.accessToken;
+        }
+        return null;
     }
 }
