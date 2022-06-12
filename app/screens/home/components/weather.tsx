@@ -344,7 +344,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         shadowOffset: {
             height: 1,
-            width: 1
+            width: 1,
         },
         backgroundColor: '#fff',
 
@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         shadowOffset: {
             height: 1,
-            width: 1
+            width: 1,
         },
         backgroundColor: '#fff',
         alignItems: "center",

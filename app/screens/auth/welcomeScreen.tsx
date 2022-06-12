@@ -9,10 +9,7 @@ import {
 } from "../../assets/welcome-screen";
 import Button from "../../common/components/button";
 import { MAIN_THEME_COLOR } from "../../common/constants";
-
-type TWelcomeScreen = {
-    navigation: any; // TODO - Find typing from library
-};
+import { TScreenProp } from "../types";
 
 const Title = () => {
     return (
@@ -23,7 +20,7 @@ const Title = () => {
     );
 };
 
-const WelcomeScreen = ({ navigation }: TWelcomeScreen) => {
+const WelcomeScreen = ({ navigation }: TScreenProp) => {
     const IMAGE_DATA = [
         { image: backgroundOne, text: "Online learning made convenient" },
         { image: backgroundTwo, text: "Online learning made convenient" },
@@ -54,7 +51,7 @@ const WelcomeScreen = ({ navigation }: TWelcomeScreen) => {
             <View style={styles.buttonContainerWrapper}>
                 <View style={styles.buttonContainer}>
                     <Button
-                        onPress={() => navigation.push("login")}
+                        onPress={() => navigation.push("Login")}
                         backgroundColor="#91B48C"
                         children="Login"
                         textColor="#fff"
@@ -62,7 +59,7 @@ const WelcomeScreen = ({ navigation }: TWelcomeScreen) => {
                         width={270}
                     />
                     <TouchableOpacity
-                        onPress={() => navigation.push("register")}
+                        onPress={() => navigation.push("Register")}
                         style={styles.signUpTextContainer}
                     >
                         <Text style={styles.signUpTextLeft}>

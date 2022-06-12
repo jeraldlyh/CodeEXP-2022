@@ -1,18 +1,22 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Text, View } from "react-native";
 import { useAuth } from "../providers/auth";
 import AuthStack from "./auth/authStack";
+import TabStack from "./tabStack";
 
 const Root = createStackNavigator();
 
 const RootStack = () => {
-    const { user } = useAuth();
+    const { isLoggedIn } = useAuth();
+
+    useEffect(() => {
+        console.log(isLoggedIn);
+    }, [isLoggedIn]);
 
     return (
         <Root.Navigator screenOptions={{ headerShown: false }}>
-            {user ? (
-                <View></View>
+            {isLoggedIn ? (
+                <Root.Screen name="Tab" component={TabStack} />
             ) : (
                 <Root.Screen name="Auth" component={AuthStack} />
             )}
