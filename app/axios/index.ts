@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://codeexp-2022.herokuapp.com/";
+const baseURL = "https://codeexp-2022.herokuapp.com/api";
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
