@@ -1,154 +1,368 @@
 import { StatusBar } from 'expo-status-bar';
 import { PermissionsAndroid, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { MAIN_THEME_COLOR } from "./common/constants";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Divider } from '@rneui/base';
+
 
 export default function WeatherPage() {
+
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
+            <View>
+                <Icon name="arrow-left" size={30}/>
+            </View>
             <View style={styles.header}>
-                <Text style={{ color: "grey" }}>May 19,2022</Text>
-                <Text style={{ fontWeight: "bold" }}>Today</Text>
+                <Text style={{ color: MAIN_THEME_COLOR.GREEN, fontFamily: "Poppins-SemiBold", fontSize: 25 }}>Tekong</Text>
+                <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 50 }}>28°</Text>
+                <Text style={{ color: "grey", fontFamily: "Poppins-Normal" }}>Mostly Cloudy</Text>
+                <Text style={{ color: "grey", fontFamily: "Poppins-Normal" }}>H: 29° L: 26°</Text>
             </View>
-            <View style={styles.dateContainter}>
-                <View style={styles.date}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        16
-                    </Text>
-                    <Text>
-                        Mo
-                    </Text>
-                </View>
-                <View style={styles.date}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        17
-                    </Text>
-                    <Text>
-                        Tu
-                    </Text>
-                </View>
-                <View style={styles.date}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        18
-                    </Text>
-                    <Text>
-                        Wed
-                    </Text>
-                </View>
-                <View style={styles.date}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        19
-                    </Text>
-                    <Text>
-                        Th
-                    </Text>
-                </View>
-                <View style={styles.date}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        20
-                    </Text>
-                    <Text>
-                        Fr
-                    </Text>
-                </View>
-                <View style={[styles.date, { borderRadius: 10, backgroundColor: "#f5f5f5" }]}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        21
-                    </Text>
-                    <Text>
-                        Sa
-                    </Text>
-                </View>
-                <View style={styles.date}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        22
-                    </Text>
-                    <Text>
-                        Su
-                    </Text>
-                </View>
+            <View style={styles.searchbox}>
+                <TextInput placeholder='Search For A Location' />
             </View>
-            <View style={styles.todaySchedule}>
-                <Text style={{ fontWeight: "bold" }}>Today's Schedule</Text>
-                <View style={styles.timeBlock}>
-                    <Text>
-                        09:00
-                    </Text>
+            <View style={styles.weatherBlock}>
+                <View style={styles.individualWeather}>
+                    <Text style={{ fontSize: 10, color: "grey" }}>12pm</Text>
+                    <Icon name="weather-cloudy" size={30} color="#52B6DF" />
+                    <Text style={{ fontSize: 10, color: "grey" }}>29°</Text>
                 </View>
-                <View style={styles.timeBlock}>
-                    <Text>
-                        10:00
-                    </Text>
+                <View style={styles.individualWeather}>
+                    <Text style={{ fontSize: 10, color: "grey" }}>1pm</Text>
+                    <Icon name="weather-cloudy" size={30} color="#52B6DF" />
+                    <Text style={{ fontSize: 10, color: "grey" }}>29°</Text>
                 </View>
-                <View style={styles.timeBlock}>
-                    <Text>
-                        11:00
-                    </Text>
+                <View style={styles.individualWeather}>
+                    <Text style={{ fontSize: 10, color: "grey" }}>2pm</Text>
+                    <Icon name="weather-cloudy" size={30} color="#52B6DF" />
+                    <Text style={{ fontSize: 10, color: "grey" }}>29°</Text>
                 </View>
+                <View style={styles.individualWeather}>
+                    <Text style={{ fontSize: 10, color: "grey" }}>3pm</Text>
+                    <Icon name="weather-cloudy" size={30} color="#52B6DF" />
+                    <Text style={{ fontSize: 10, color: "grey" }}>29°</Text>
+                </View>
+                <View style={styles.individualWeather}>
+                    <Text style={{ fontSize: 10, color: "grey" }}>4pm</Text>
+                    <Icon name="weather-cloudy" size={30} color="#52B6DF" />
+                    <Text style={{ fontSize: 10, color: "grey" }}>29°</Text>
+                </View>
+                <View style={styles.individualWeather}>
+                    <Text style={{ fontSize: 10, color: "grey" }}>5pm</Text>
+                    <Icon name="weather-cloudy" size={30} color="#52B6DF" />
+                    <Text style={{ fontSize: 10, color: "grey" }}>29°</Text>
+                </View>
+
             </View>
-            <Text style={{ fontWeight: "bold", marginTop: 10 }}>
-                Upcoming Schedule
-            </Text>
-            <View style={styles.upcomingSchedule}>
-                <Text style={{ fontWeight: "bold" }}>Reservist</Text>
-                <View>
-                    <Text style={{ fontWeight: "bold", marginTop: 10 }}>Add in some location</Text>
-                    <Text>more details on location</Text>
-                    <View style={styles.nextEvent}>
-                        <Text style={{ fontWeight: 'bold' }}>Sunday,14 Aug 2022</Text>
-                        <Text>14:00-15:00</Text>
+            <View style={styles.tenDayForecastContainer}>
+                <Text style={{ marginTop: 20, fontFamily: "Poppins-SemiBold", fontSize: 16 }}>10 Day forecast</Text>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Today</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
                     </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Mon</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Tues</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Wed</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Thu</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Fri</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Sat</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
+                </View>
+                <View style={styles.dailyForecastBlock}>
+                    <Text style={{ width: "15%", fontFamily: "Poppins-Normal", fontSize: 15 }}>Sun</Text>
+                    <View style={{ alignItems: "center", justifyContent: "center" }}>
+                        <Icon name="weather-rainy" size={20} color="#52B6DF" />
+                        <Text style={{ fontFamily: "Poppins-Normal", fontSize: 8 }} >50%</Text>
+                    </View>
+
+                    <Text>26°</Text>
+                    <View style={{ width: "50%" }}>
+                        <View style={{ justifyContent: "center", alignItems: "center" }}>
+                            <View
+                                style={{
+                                    width: 150,
+                                    height: 3,
+                                    borderRadius: 9,
+                                    backgroundColor: '#e8e8e8',
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        width: '40%',
+                                        height: '100%',
+                                        backgroundColor: '#91B48C',
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <Text>29°</Text>
+
                 </View>
             </View>
-            <View style={styles.weatherContainer}>
-                <Text style={{ fontWeight: "bold", }}>Tekong</Text>
-                <Text style={{ fontWeight: "bold", fontSize: 20 }}>28°</Text>
-
-            </View>
-        </View>
-    );
+        </ScrollView>
+    )
 }
-
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#fff',
         width: "100%",
-        height: "100%",
-        paddingTop: 50,
+        paddingVertical: 50,
         paddingHorizontal: 20,
+
         // alignItems: 'center',
         // justifyContent: 'center',
     },
     header: {
         width: "100%",
-        flexDirection: "column"
+        alignItems: "center",
+        flexDirection: "column",
+        textAlign: "justify"
     },
-    dateContainter: {
+    searchbox: {
         width: "100%",
-        marginTop: 30,
+        marginTop: 10,
+        backgroundColor: "#f4f4f4",
+        padding: 20,
+        borderRadius: 20
+    },
+    weatherBlock: {
+        marginTop: 10,
+        width: "100%",
+        justifyContent: "space-between",
         flexDirection: "row",
-        justifyContent: "space-between"
+        shadowColor: "#000000",
+        shadowOpacity: 0.2,
+        borderRadius: 10,
+        shadowRadius: 2,
+        shadowOffset: {
+            height: 1,
+            width: 1
+        },
+        backgroundColor: '#fff',
 
     },
-    date: {
+    individualWeather: {
         flexDirection: "column",
-        padding: 10
+        padding: 10,
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: 5
     },
-    todaySchedule: {
-        width: "100%",
-        marginTop: 20
+    tenDayForecastContainer: {
+        width: "100%"
     },
-    timeBlock: {
-        marginTop: 10,
+    dailyForecastBlock: {
+        flexDirection: "row",
         padding: 20,
         width: "100%",
-        backgroundColor: "#f5f5f5",
-        borderRadius: 10
-    },
-    upcomingSchedule: {
-        marginTop: 10,
-        padding: 10,
-        width: "100%",
         shadowColor: "#000000",
         shadowOpacity: 0.2,
         borderRadius: 10,
@@ -158,31 +372,9 @@ const styles = StyleSheet.create({
             width: 1
         },
         backgroundColor: '#fff',
-        flexDirection: "column",
-    },
-    nextEvent: {
-        marginTop: 10,
-        width: "100%",
-        borderRadius: 10,
-        backgroundColor: "#f5faff",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        padding: 10
-    },
-    weatherContainer: {
-        marginTop: 10,
-        padding: 10,
-        width: "100%",
-        shadowColor: "#000000",
-        shadowOpacity: 0.2,
-        borderRadius: 10,
-        shadowRadius: 2,
-        shadowOffset: {
-            height: 1,
-            width: 1
-        },
-        backgroundColor: '#fff',
-        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between"
+
     }
 
-});
+})
