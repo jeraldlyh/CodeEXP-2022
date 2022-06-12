@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from "react";
+import { Text, View } from "react-native";
+import * as Font from "expo-font";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const [isLoaded, setIsLoaded] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    useEffect(() => {
+        loadFonts();
+    }, []);
+
+    const loadFonts = async () => {
+        await Font.loadAsync({
+            "Poppins-Normal": require("./assets/fonts/Poppins-Regular.ttf"),
+            "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
+            "Poppins-Thin": require("./assets/fonts/Poppins-Thin.ttf"),
+            "Poppins-SemiBold": require("./assets/fonts/Poppins-SemiBold.ttf"),
+        });
+        setIsLoaded(true);
+    };
+
+    return (
+        <SafeAreaProvider>
+            {isLoaded ? (
+                <NavigationContainer>
+                    <View><Text>Loaded</Text></View>
+                </NavigationContainer>
+            ) : (
+                <View><Text>Loading</Text></View>
+            )}
+        </SafeAreaProvider>
+    );
+}
