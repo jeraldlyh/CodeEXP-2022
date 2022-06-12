@@ -12,6 +12,7 @@ import { loginBackground } from "../../assets/login-screen";
 import BackButton from "../../common/components/backButton";
 import Button from "../../common/components/button";
 import { MAIN_THEME_COLOR } from "../../common/constants";
+import { useAuth } from "../../providers/auth";
 import { AuthService } from "../../services/auth";
 import { TScreenProp } from "../types";
 
@@ -20,10 +21,11 @@ const LoginScreen = ({ navigation }: TScreenProp) => {
     const [isSecure, setIsSecure] = useState(true);
     const [password, setPassword] = useState<string>("");
     const [errorMessage, setErrorMessage] = useState<string>("");
+    const { signIn } = useAuth();
 
     const handleLogin = async () => {
         try {
-            await AuthService.loginUser(username, password);
+            await signIn(username, password);
         } catch (error) {
             const errorResponse = (error as any).response;
 
