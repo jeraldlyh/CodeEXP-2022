@@ -7,12 +7,12 @@ type TProviderProps = {
 };
 
 type TContext = {
-    user: TUser | null;
+    isLoggedIn: boolean;
     isLoading: boolean;
     signIn: (username: string, password: string) => Promise<void>;
 };
 const initialContext = {
-    user: null,
+    isLoggedIn: false,
     isLoading: false,
     signIn: async () => undefined,
 };
@@ -28,15 +28,16 @@ export const AuthProvider: React.FC<TProviderProps> = ({ children }) => {
 export const useAuth = () => useContext(AuthContext);
 
 const useCustomAuth = () => {
-    const [user, setUser] = useState<TUser | null>(null);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const signIn = async (username: string, password: string) => {
-        const token = await AuthService.loginUser(username, password);
+        await AuthService.loginUser(username, password);
+        setIsLoggedIn(true);
     };
 
     return {
-        user,
+        isLoggedIn,
         isLoading,
         signIn,
     };
