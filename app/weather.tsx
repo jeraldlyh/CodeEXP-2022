@@ -100,8 +100,8 @@ export default function WeatherPage() {
                 </View>
             </View>
             <View style={styles.weatherContainer}>
-                <Text style={{fontWeight:"bold",}}>Tekong</Text>
-                <Text style={{fontWeight:"bold",fontSize:20}}>28°</Text>
+                <Text style={{ fontWeight: "bold", }}>Tekong</Text>
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>28°</Text>
 
             </View>
         </View>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         padding: 10
     },
-    weatherContainer:{
+    weatherContainer: {
         marginTop: 10,
         padding: 10,
         width: "100%",
