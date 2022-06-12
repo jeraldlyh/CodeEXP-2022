@@ -2,6 +2,7 @@ import { NestFactory } from "@nestjs/core";
 import { ConfigService } from "@nestjs/config";
 import { ValidationPipe } from "@nestjs/common";
 import * as firebase from "firebase-admin";
+import * as cookieParser from "cookie-parser";
 import { AppModule } from "./app/app.module";
 
 async function bootstrap() {
@@ -21,6 +22,7 @@ async function bootstrap() {
     app.setGlobalPrefix("api");
     app.enableCors();
     app.useGlobalPipes(new ValidationPipe());
+    app.use(cookieParser());
     await app.listen(process.env.PORT || 8000);
 }
 bootstrap();

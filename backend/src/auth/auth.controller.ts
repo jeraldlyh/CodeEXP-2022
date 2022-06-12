@@ -1,5 +1,6 @@
-import { Request, Response, Controller, Post, UseGuards } from "@nestjs/common";
+import { Request, Response, Controller, Post, UseGuards, Body } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import { RegisterUserDto } from "src/auth/auth.dto";
 import { AuthService } from "src/auth/auth.service";
 import { JwtAuthGuard } from "src/auth/jwt-auth.guard";
 
@@ -20,13 +21,21 @@ export class AuthController {
     }
 
     @Post("/register")
-    async registerUser() {
-        return;
+    async registerUser(@Response() response, @Body() registerUserDto: RegisterUserDto) {
+        const jwtToken = await this.authService.registerUser(registerUserDto);
+
+        response.cookie("accessToken", jwtToken.access_token, {
+            httponly: true,
+        });
+
+        return response.send(jwtToken);
     }
 
     @UseGuards(JwtAuthGuard)
     @Post("/logout")
-    async logoutUser() {
-        return;
+    async logoutUser(@Response() response) {
+        response.cookie("accessToken", "", { maxAge: 0 });
+
+        return response.end();
     }
 }

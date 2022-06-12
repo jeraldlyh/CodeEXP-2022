@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { User } from "src/users/users.model";
 import { UsersRepository } from "src/users/users.repository";
+import { CreateUserResponse } from "src/users/users.type";
 
 @Injectable()
 export class UsersService {
@@ -8,5 +9,10 @@ export class UsersService {
 
     async findOne(username: string): Promise<User> {
         return await this.usersRepository.findByUsername(username);
+    }
+
+    // TODO - Hash password
+    async create(username: string, password: string, email: string): Promise<CreateUserResponse> {
+        return await this.usersRepository.create(username, password, email);
     }
 }
