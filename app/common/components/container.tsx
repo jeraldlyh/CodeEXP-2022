@@ -1,10 +1,15 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 type TContainerProps = {
     children: React.ReactNode;
+    scrollable?: boolean;
 };
 
-const Container = ({ children }: TContainerProps) => {
+const Container = ({ children, scrollable }: TContainerProps) => {
+    if (scrollable) {
+        return <ScrollView style={styles.container}>{children}</ScrollView>;
+    }
+
     return <View style={styles.container}>{children}</View>;
 };
 
