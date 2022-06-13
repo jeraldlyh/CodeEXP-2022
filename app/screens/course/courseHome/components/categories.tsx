@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     },
     categoryText: {
         fontFamily: "Poppins-Bold",
-        fontSize: 20,
+        fontSize: MAIN_THEME.FONT_SIZE.SUB_TITLE,
     },
     seeAllText: {
         fontFamily: "Poppins-SemiBold",

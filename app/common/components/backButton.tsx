@@ -16,7 +16,7 @@ const BackButton = ({ style }: TBackButtonProps) => {
                 <Icon
                     name="arrow-back-outline"
                     type="ionicon"
-                    color={style.color ? style.color : "#fff"}
+                    color={style && style.color ? style.color : "#fff"}
                 />
             </TouchableOpacity>
         </View>
