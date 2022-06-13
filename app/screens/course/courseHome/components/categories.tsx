@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { Icon } from "@rneui/base";
-import { MAIN_THEME_COLOR } from "../../../../common/constants";
+import { MAIN_THEME } from "../../../../common/constants";
 
 const Categories = () => {
     const CATEGORY_DATA = [
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         padding: 20,
         minHeight: 104,
         minWidth: 95,
-        backgroundColor: MAIN_THEME_COLOR.CARD,
+        backgroundColor: MAIN_THEME.COLOR.CARD,
         borderRadius: 16,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,

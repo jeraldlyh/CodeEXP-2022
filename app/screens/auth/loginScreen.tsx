@@ -11,7 +11,7 @@ import { TextInput } from "react-native-paper";
 import { loginBackground } from "../../assets/login-screen";
 import BackButton from "../../common/components/backButton";
 import Button from "../../common/components/button";
-import { MAIN_THEME_COLOR } from "../../common/constants";
+import { MAIN_THEME } from "../../common/constants";
 import { useAuth } from "../../providers/auth";
 import { TScreenProp } from "../types";
 

@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { MAIN_THEME_COLOR } from "../../../../common/constants";
+import { MAIN_THEME } from "../../../../common/constants";
 
 const BattleCard = () => {
     return (
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         padding: 20,
         width: "100%",
-        backgroundColor: MAIN_THEME_COLOR.CARD,
+        backgroundColor: MAIN_THEME.COLOR.CARD,
         borderRadius: 16,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     battleButton: {
-        backgroundColor: MAIN_THEME_COLOR.GREEN,
+        backgroundColor: MAIN_THEME.COLOR.GREEN,
         borderRadius: 8,
     },
     battleButtonText: {
