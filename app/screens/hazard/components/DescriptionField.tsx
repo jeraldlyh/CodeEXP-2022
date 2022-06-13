@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   wordCount: {
     marginRight: "auto",
-    fontFamily: "Poppins-Regualar",
+    fontFamily: "Poppins-Normal",
     fontSize: 14,
     color: "grey",
     marginTop: 20,
