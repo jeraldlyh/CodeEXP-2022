@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/base";
 import HomeStack from "./home/homeStack";
+import CourseStack from "./course/courseStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,8 +16,8 @@ const TabStack = () => {
 
                     if (route.name === "Home") {
                         iconName = focused ? "home" : "home-outline";
-                    } else if (route.name === "Compete") {
-                        iconName = focused ? "trophy" : "trophy-outline";
+                    } else if (route.name === "Courses") {
+                        iconName = focused ? "clipboard" : "clipboard-outline";
                     } else if (route.name === "Notifs") {
                         iconName = focused
                             ? "notifications"
@@ -35,6 +36,7 @@ const TabStack = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="Courses" component={CourseStack} />
         </Tab.Navigator>
     );
 };
