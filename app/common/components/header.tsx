@@ -16,18 +16,16 @@ const Header = ({ title }: THeaderProps) => {
 
 const styles = StyleSheet.create({
     container: {
-        position: "relative",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
     },
     titleText: {
         fontFamily: "Poppins-SemiBold",
         fontSize: 25,
         textAlign: "center",
         flex: 1,
+        marginRight: 15,    // TODO: Not true center
     },
     backButton: {
         left: 26,

@@ -1,8 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/base";
+import { getHeaderTitle } from "@react-navigation/elements";
 import HomeStack from "./home/homeStack";
 import CourseStack from "./course/courseStack";
+import Header from "../common/components/header";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +35,11 @@ const TabStack = () => {
                 },
                 tabBarActiveTintColor: "#2B2B2B",
                 tabBarInactiveTintColor: "gray",
+                header: ({ navigation, route, options }) => {
+                    const title = getHeaderTitle(options, route.name);
+
+                    return <Header title={title} />;
+                },
             })}
         >
             <Tab.Screen name="Home" component={HomeStack} />
