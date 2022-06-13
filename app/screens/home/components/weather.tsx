@@ -2,6 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { MAIN_THEME } from "../../../common/constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Divider } from '@rneui/base';
+import React from 'react';
 
 type HourlyWeatherProps = {
     time: string;
