@@ -18,6 +18,7 @@ const BackButton = () => {
 const styles = StyleSheet.create({
     buttonContainer: {
         alignSelf: "flex-start",
+        marginBottom: 29,
     },
     button: {
         position: "absolute",
