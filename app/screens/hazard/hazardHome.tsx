@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { TScreenProp } from "../types";
 
 const HazardHomepage = ({ navigation }: TScreenProp) => {
   type ReportOptionProps = {
