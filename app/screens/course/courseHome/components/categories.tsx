@@ -30,8 +30,8 @@ const Categories = () => {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ paddingVertical: 4 }}
             >
-                {CATEGORY_DATA.map((data) => (
-                    <View style={styles.categoryCard}>
+                {CATEGORY_DATA.map((data, index) => (
+                    <View key={index} style={styles.categoryCard}>
                         <Icon
                             name={data.icon}
                             type={data.type}
