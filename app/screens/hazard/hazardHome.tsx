@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function HazardHomepage() {
+const HazardHomepage = ({ navigation }: TScreenProp) => {
     return (
         <View style={styles.container}>
             <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
@@ -12,7 +12,7 @@ export default function HazardHomepage() {
             <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 15, alignSelf: "flex-start", marginTop: 30 }}>
                 Area of concern
             </Text>
-            <TouchableOpacity containerStyle={{ width: "100%" }}>
+            <TouchableOpacity containerStyle={{ width: "100%" }} onPress={() => navigation.push("HazardReporting")}>
                 <View style={styles.singleOption}>
                     <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                         <Image source={require("../../assets/hazard/hazard.png")} />
@@ -22,7 +22,7 @@ export default function HazardHomepage() {
 
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity containerStyle={{ width: "100%" }}>
+            <TouchableOpacity containerStyle={{ width: "100%" }} onPress={() => navigation.push("SafetyConcern")}>
 
                 <View style={styles.singleOption}>
                     <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
@@ -34,10 +34,10 @@ export default function HazardHomepage() {
 
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity containerStyle={{ width: "100%" }}>
+            <TouchableOpacity containerStyle={{ width: "100%" }} onPress={() => navigation.push("NearMiss")}>
 
                 <View style={styles.singleOption}>
-                    <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                    <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }} >
                         <Image source={require("../../assets/hazard/near-miss.png")} />
                         <Text style={{ marginLeft: 10, fontFamily: "Poppins-Normal", fontSize: 15 }}>Near miss</Text>
 
@@ -52,19 +52,22 @@ export default function HazardHomepage() {
 
 
 }
+
+export default HazardHomepage
 const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: "100%",
         paddingTop: 50,
         paddingHorizontal: 20,
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor:"#FFF"
     },
     singleOption: {
         width: "100%",
         marginTop: 10,
         padding: 15,
-        hadowColor: "#000000",
+        shadowColor: "#000000",
         shadowOpacity: 0.2,
         borderRadius: 10,
         shadowRadius: 2,
