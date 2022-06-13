@@ -1,32 +1,26 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Icon } from "@rneui/base";
 
-const BackButton = () => {
+type TBackButtonProps = {
+    style?: any;
+};
+
+const BackButton = ({ style }: TBackButtonProps) => {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.buttonContainer}>
+        <View style={style}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Icon name="arrow-back-outline" type="ionicon" color="#fff" />
+                <Icon
+                    name="arrow-back-outline"
+                    type="ionicon"
+                    color={style.color ? style.color : "#fff"}
+                />
             </TouchableOpacity>
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    buttonContainer: {
-        alignSelf: "flex-start",
-        marginBottom: 29,
-    },
-    button: {
-        position: "absolute",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 9999,
-    },
-});
 
 export default BackButton;
