@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { PermissionsAndroid, StyleSheet, Text, View } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MAIN_THEME_COLOR } from "./common/constants";
+import { MAIN_THEME_COLOR } from "../../../common/constants";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider } from '@rneui/base';
 
@@ -12,7 +12,7 @@ export default function WeatherPage() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View>
-                <Icon name="arrow-left" size={30}/>
+                <Icon name="arrow-left" size={30} />
             </View>
             <View style={styles.header}>
                 <Text style={{ color: MAIN_THEME_COLOR.GREEN, fontFamily: "Poppins-SemiBold", fontSize: 25 }}>Tekong</Text>
