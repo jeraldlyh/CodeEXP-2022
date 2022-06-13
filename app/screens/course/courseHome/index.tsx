@@ -1,4 +1,5 @@
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
+import { Fragment } from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import random from "lodash/random";
 import Container from "../../../common/components/container";
 import { MAIN_THEME } from "../../../common/constants";
@@ -6,6 +7,27 @@ import BattleCard from "./components/battleCard";
 import Categories from "./components/categories";
 import { cybersecurityImage } from "../../../assets/courses";
 import ProgressBar from "../../../common/components/progressBar";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Card from "../../../common/components/card";
+
+type TCourseCardBodyProps = {
+    numerator: number;
+    denominator: number;
+};
+
+const CourseCardBody = ({ numerator, denominator }: TCourseCardBodyProps) => {
+    return (
+        <Fragment>
+            <Text style={styles.cardDescription}>
+                {numerator}/{denominator} topics completed
+            </Text>
+            <ProgressBar numerator={numerator} denominator={denominator} />
+            <TouchableOpacity style={styles.cardButton}>
+                <Text style={styles.cardButtonText}>Continue course</Text>
+            </TouchableOpacity>
+        </Fragment>
+    );
+};
 
 const CourseHome = () => {
     const SUGGESTED_COURSES = [
@@ -33,25 +55,17 @@ const CourseHome = () => {
                 </Text>
                 <ScrollView>
                     {SUGGESTED_COURSES.map((course, index) => (
-                        <View key={index} style={styles.cardContainer}>
-                            <View style={styles.cardTextContainer}>
-                                <Text style={styles.cardTitle}>
-                                    {course.title}
-                                </Text>
-                                <Text style={styles.cardDescription}>
-                                    {course.numerator}/{course.denominator}{" "}
-                                    topics completed
-                                </Text>
-                                <ProgressBar
+                        <Card
+                            key={index}
+                            title={course.title}
+                            body={
+                                <CourseCardBody
                                     numerator={course.numerator}
                                     denominator={course.denominator}
                                 />
-                            </View>
-                            <Image
-                                source={cybersecurityImage}
-                                style={{ alignSelf: "flex-end" }}
-                            />
-                        </View>
+                            }
+                            imageSrc={cybersecurityImage}
+                        />
                     ))}
                 </ScrollView>
             </View>
@@ -83,21 +97,18 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: "space-between",
     },
-    cardTextContainer: {
-        display: "flex",
-        flexDirection: "column",
-        padding: 16,
-        alignItems:"flex-start",
-        minWidth: 210,
-        maxWidth: 210,
-    },
-    cardTitle: {
-        fontFamily: "Poppins-Bold",
-        fontSize: 18,
-    },
     cardDescription: {
         fontFamily: "Poppins-Normal",
         marginVertical: 5,
+    },
+    cardButton: {
+        marginTop: 10,
+        padding: 8,
+        backgroundColor: "#F0F0F0",
+        borderRadius: 7,
+    },
+    cardButtonText: {
+        color: MAIN_THEME.COLOR.GREEN,
     },
 });
 
