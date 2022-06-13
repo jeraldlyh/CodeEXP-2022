@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MAIN_THEME_COLOR } from "../../../common/constants";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider } from '@rneui/base';
+import React from 'react';
 
 
 export default function WeatherPage() {
