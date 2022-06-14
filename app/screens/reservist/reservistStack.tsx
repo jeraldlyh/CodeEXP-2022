@@ -1,15 +1,14 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import ProfilePage from "./components/profilePage";
-import SettingsPage from "./components/settings";
 import Header from "../../common/components/header";
 import { getHeaderTitle } from "@react-navigation/elements";
+import ReservistPage from "./components/reservist";
 
-const Profile = createStackNavigator();
+const Reservist = createStackNavigator();
 
-const ProfileStack = () => {
+const ReservistStack = () => {
     return (
-        <Profile.Navigator
+        <Reservist.Navigator
             screenOptions={{
                 headerShown: true,
                 header: ({ navigation, route, options }) => {
@@ -19,14 +18,15 @@ const ProfileStack = () => {
                 },
             }}
         >
-            <Profile.Screen
-                name="RootProfile"
-                component={ProfilePage}
-                options={{ title: "Profile" }}
+            <Reservist.Screen
+                name="RootReservist"
+                component={ReservistPage}
+                options={{
+                    title: "Reservist",
+                }}
             />
-            <Profile.Screen name="Settings" component={SettingsPage} />
-        </Profile.Navigator>
+        </Reservist.Navigator>
     );
 };
 
-export default ProfileStack;
+export default ReservistStack;

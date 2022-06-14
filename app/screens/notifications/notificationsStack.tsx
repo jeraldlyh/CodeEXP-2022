@@ -19,8 +19,11 @@ const NotificationsStack = () => {
             }}
         >
             <Notifications.Screen
-                name="Notifications"
+                name="RootNotifications"
                 component={NotificationsPage}
+                options={{
+                    title: "Notifications",
+                }}
             />
         </Notifications.Navigator>
     );

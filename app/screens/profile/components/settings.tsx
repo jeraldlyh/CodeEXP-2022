@@ -17,7 +17,7 @@ export const Card = (props: any) => {
         container: {
             height: 64,
             flexDirection: "row",
-            width: 350,
+            width: "100%",
             borderRadius: 14,
             alignItems: "center",
             justifyContent: "space-between",
@@ -72,76 +72,67 @@ export const Card = (props: any) => {
 function SettingsPage({ navigation }: TScreenProp) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.subContainer}>
-                    <Text style={styles.subHeader}>Account</Text>
-                    <Card
-                        text="Set Two-Factor Authentication"
-                        icon="lock-outline"
-                        onPress={() => console.log("")}
-                    />
-                    <Card
-                        text="Language"
-                        icon="translate"
-                        onPress={() => console.log("")}
-                    />
-                    <Card
-                        text="Font Size"
-                        icon="format-size"
-                        onPress={() => console.log("")}
-                    />
-                </View>
+            <View style={styles.subContainer}>
+                <Text style={styles.subHeader}>Account</Text>
+                <Card
+                    text="Set Two-Factor Authentication"
+                    icon="lock-outline"
+                    onPress={() => console.log("")}
+                />
+                <Card
+                    text="Language"
+                    icon="translate"
+                    onPress={() => console.log("")}
+                />
+                <Card
+                    text="Font Size"
+                    icon="format-size"
+                    onPress={() => console.log("")}
+                />
+            </View>
 
-                <View style={styles.subContainer}>
-                    <Text style={styles.subHeader}>Notifications</Text>
-                    <Card
-                        text="Notification Settings"
-                        icon="bell-outline"
-                        onPress={() => console.log("")}
-                    />
-                </View>
+            <View style={styles.subContainer}>
+                <Text style={styles.subHeader}>Notifications</Text>
+                <Card
+                    text="Notification Settings"
+                    icon="bell-outline"
+                    onPress={() => console.log("")}
+                />
+            </View>
 
-                <View style={styles.subContainer}>
-                    <Text style={styles.subHeader}>About</Text>
-                    <Card
-                        text="Terms of Use"
-                        icon="file-outline"
-                        onPress={() => console.log("")}
-                    />
-                    <Card
-                        text="Privacy Policy"
-                        icon="shield-edit-outline"
-                        onPress={() => console.log("")}
-                    />
-                    <Card
-                        text="Report a problem"
-                        icon="alert-circle-outline"
-                        onPress={() => console.log("")}
-                    />
-                </View>
+            <View style={styles.subContainer}>
+                <Text style={styles.subHeader}>About</Text>
+                <Card
+                    text="Terms of Use"
+                    icon="file-outline"
+                    onPress={() => console.log("")}
+                />
+                <Card
+                    text="Privacy Policy"
+                    icon="shield-edit-outline"
+                    onPress={() => console.log("")}
+                />
+                <Card
+                    text="Report a problem"
+                    icon="alert-circle-outline"
+                    onPress={() => console.log("")}
+                />
+            </View>
 
-                <View style={{ marginTop: 30, marginBottom: 60 }}>
-                    <Button
-                        backgroundColor={"#91B48C"}
-                        textColor={"white"}
-                        children={"Log out"}
-                        onPress={function (): void {
-                            throw new Error("Function not implemented.");
-                        }}
-                        height={56}
-                        width={355}
-                    />
-                </View>
-            </ScrollView>
+            <View style={{ marginTop: 30, marginBottom: 60, width: "100%" }}>
+                <Button
+                    backgroundColor={"#91B48C"}
+                    textColor={"white"}
+                    children={"Log out"}
+                    onPress={() => console.log("Logging out")}
+                    height={56}
+                />
+            </View>
         </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    header: {
-        fontFamily: "Poppins-Bold",
-        marginLeft: 3,
-    },
     subHeader: {
         fontFamily: "Poppins-SemiBold",
         marginBottom: 10,
@@ -150,7 +141,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     subContainer: {
-        width: "80%",
+        width: "100%",
     },
     text: {
         color: "#9999AA",

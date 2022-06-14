@@ -5,18 +5,6 @@ import { TScreenProp } from "../../types";
 export default function ReservistPage({ navigation }: TScreenProp) {
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text
-                    style={{
-                        fontWeight: "bold",
-                        fontSize: 25,
-                        alignSelf: "center",
-                    }}
-                >
-                    Reservist
-                </Text>
-            </View>
-
             <TouchableOpacity style={styles.recapContainer}>
                 <Image
                     source={require("../../../assets/recap-1.jpg")}
@@ -159,7 +147,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         width: "100%",
         height: "100%",
-        paddingTop: 50,
+        paddingTop: 25,
         paddingHorizontal: 20,
     },
     header: {

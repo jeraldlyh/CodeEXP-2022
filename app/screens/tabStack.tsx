@@ -50,6 +50,7 @@ const TabStack = () => {
                     }
                     return null;
                 },
+                headerShown:false,
             })}
         >
             <Tab.Screen name="Home" component={HomeStack} />

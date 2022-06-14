@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://codeexp-2022.herokuapp.com/api";
+const baseURL = "http://192.168.1.3:8000/api";
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
