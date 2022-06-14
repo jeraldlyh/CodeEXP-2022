@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { EDifficulty } from "../screens/course/competition/types";
 
-type TCompetition = {
+export type TCompetition = {
     host: {
         name: string;
         avatar: string;

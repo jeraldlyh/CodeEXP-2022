@@ -1,17 +1,23 @@
 import React from "react";
-
 import { View, Image, StyleSheet, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MAIN_THEME } from "../../../../common/constants";
+import { TScreenProp } from "../../../types";
 
-type QuestionProps = {
-    question: string;
-    setter: string;
-    rank: string;
-    title: string;
-    points: number;
-};
-export default function CompetitionQuestion(props: QuestionProps) {
+export default function CompetitionQuestion({
+    navigation,
+    route,
+}: TScreenProp) {
+    const { question, title, amount, options, setter } = route.params;
+
+    const renderQuestions = () => {
+        return options.map((option: string) => (
+            <TouchableOpacity containerStyle={styles.optionContainer}>
+                <Text style={styles.optionText}>{option}</Text>
+            </TouchableOpacity>
+        ));
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
@@ -27,7 +33,7 @@ export default function CompetitionQuestion(props: QuestionProps) {
                         <Text
                             style={{ fontFamily: "Poppins-Bold", fontSize: 18 }}
                         >
-                            {props.title}
+                            {title}
                         </Text>
                         <Text
                             style={{
@@ -36,7 +42,7 @@ export default function CompetitionQuestion(props: QuestionProps) {
                             }}
                         >
                             {" "}
-                            +{props.points} points
+                            +{amount} points
                         </Text>
                     </View>
                     <View
@@ -47,7 +53,7 @@ export default function CompetitionQuestion(props: QuestionProps) {
                         }}
                     >
                         <Image
-                            source={require("../../../assets/profile/profile1.png")}
+                            source={require("../../../../assets/profile/profile1.png")}
                         />
                         <View style={{ marginLeft: 10 }}>
                             <Text
@@ -56,7 +62,7 @@ export default function CompetitionQuestion(props: QuestionProps) {
                                     fontSize: 11,
                                 }}
                             >
-                                {props.setter}
+                                {setter}
                             </Text>
                             <Text
                                 style={{
@@ -64,13 +70,13 @@ export default function CompetitionQuestion(props: QuestionProps) {
                                     fontSize: 10,
                                 }}
                             >
-                                {props.rank}
+                                {1}
                             </Text>
                         </View>
                     </View>
                 </View>
                 <Image
-                    source={require("../../../assets/course/java.jpg")}
+                    source={require("../../../../assets/course/java.jpg")}
                     style={{ width: "100%", height: "100%", borderRadius: 14 }}
                 />
             </View>
@@ -117,43 +123,10 @@ export default function CompetitionQuestion(props: QuestionProps) {
                         marginTop: 20,
                     }}
                 >
-                    {props.question}
+                    {question}
                 </Text>
 
-                <TouchableOpacity
-                    containerStyle={{
-                        borderRadius: 14,
-                        marginTop: 20,
-                        alignItems: "center",
-                        paddingVertical: 10,
-                        width: "100%",
-                        justifyContent: "center",
-                        borderWidth: 1,
-                    }}
-                >
-                    <Text
-                        style={{ fontFamily: "Poppins-Normal", fontSize: 15 }}
-                    >
-                        Yes
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    containerStyle={{
-                        borderRadius: 14,
-                        marginTop: 20,
-                        alignItems: "center",
-                        paddingVertical: 10,
-                        width: "100%",
-                        justifyContent: "center",
-                        borderWidth: 1,
-                    }}
-                >
-                    <Text
-                        style={{ fontFamily: "Poppins-Normal", fontSize: 15 }}
-                    >
-                        No
-                    </Text>
-                </TouchableOpacity>
+                {renderQuestions()}
                 <TouchableOpacity
                     containerStyle={{
                         marginTop: 60,
@@ -207,4 +180,14 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
     },
+    optionContainer: {
+        borderRadius: 14,
+        marginTop: 20,
+        alignItems: "center",
+        paddingVertical: 10,
+        width: "100%",
+        justifyContent: "center",
+        borderWidth: 1,
+    },
+    optionText: { fontFamily: "Poppins-Normal", fontSize: 15 },
 });

@@ -21,6 +21,7 @@ export class CompetitionController {
 
     @Post("/join")
     async join(@User() user, @Body() body) {
+        console.log("here", body);
         return await this.competitionService.join(user, body);
     }
 }

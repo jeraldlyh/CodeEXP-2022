@@ -44,6 +44,9 @@ const CompetitionList = ({
                                 competitionId={data.id}
                                 title={data.course}
                                 amount={data.amount}
+                                navigation={navigation}
+                                quiz={data.quiz}
+                                host={data.host}
                             />
                             <Space />
                         </Fragment>

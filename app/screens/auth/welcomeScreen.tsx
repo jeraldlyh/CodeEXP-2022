@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   titleTextRight: {
     fontFamily: "Poppins-ExtraBold",
     fontSize: 36,
-    color: MAIN_THEME_COLOR.GREEN,
+    color: MAIN_THEME.COLOR.GREEN,
   },
   descriptionText: {
     width: "70%",
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   signUpTextRight: {
     fontSize: 16,
     fontWeight: "bold",
-    color: MAIN_THEME_COLOR.GREEN,
+    color: MAIN_THEME.COLOR.GREEN,
   },
 });
 

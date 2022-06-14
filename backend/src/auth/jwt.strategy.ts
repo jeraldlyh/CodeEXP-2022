@@ -19,7 +19,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
 
     private static extractJwt(request: Request): string | null {
-        console.log("receiving request")
         if (request.cookies && "accessToken" in request.cookies) {
             return request.cookies.accessToken;
         }

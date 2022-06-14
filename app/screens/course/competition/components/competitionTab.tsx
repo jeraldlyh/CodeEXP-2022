@@ -2,13 +2,14 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
+import { TScreenProp } from "../../../types";
 import CompetitionList from "./competitionList";
 
-type TCompetitionTabProps = {
+type TCompetitionTabProps = TScreenProp & {
     actionButton: React.ReactNode;
 };
 
-const CompetitionTab = ({ actionButton }: TCompetitionTabProps) => {
+const CompetitionTab = ({ actionButton, navigation }: TCompetitionTabProps) => {
     const [index, setIndex] = useState(0);
     const [routes] = useState([
         { key: "Beginner", title: "Beginner" },
@@ -16,7 +17,6 @@ const CompetitionTab = ({ actionButton }: TCompetitionTabProps) => {
         { key: "Advanced", title: "Advanced" },
     ]);
 
-    const navigation = useNavigation();
     const renderScene = ({ route }: any) => {
         return (
             <CompetitionList

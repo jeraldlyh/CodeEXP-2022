@@ -5,7 +5,7 @@ import CourseHome from "./courseHome";
 import Header from "../../common/components/header";
 import IndividualCourse from "./detail/individualCourse";
 import Lesson from "./detail/lesson";
-import CompetitionQuestion from "./competition/competitionQuestion";
+import CompetitionQuestion from "./competition/components/competitionQuestion";
 
 const Course = createStackNavigator();
 
