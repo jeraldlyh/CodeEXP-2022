@@ -1,11 +1,16 @@
 import React from "react";
-import { Keyboard, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import {
+    Dimensions,
+    Keyboard,
+    StyleSheet,
+    TouchableWithoutFeedback,
+} from "react-native";
 import { BlurView } from "expo-blur";
 import { TModalProp } from "../../screens/course/competition/types";
 
 const Modal = ({ isOpen, setIsOpen, children }: TModalProp) => {
     return (
-        <BlurView intensity={95} style={styles.modalBackground}>
+        <BlurView intensity={95} tint="light" style={styles.modalBackground}>
             <TouchableWithoutFeedback
                 onPress={Keyboard.dismiss}
                 accessible={false}
@@ -18,7 +23,8 @@ const Modal = ({ isOpen, setIsOpen, children }: TModalProp) => {
 const styles = StyleSheet.create({
     modalBackground: {
         position: "absolute",
-        height: "100%",
+        height: Dimensions.get("window").height,
+        width: Dimensions.get("window").width,
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#1F2937",

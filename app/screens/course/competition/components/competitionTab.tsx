@@ -4,7 +4,11 @@ import { StyleSheet, Text } from "react-native";
 import { TabBar, TabView } from "react-native-tab-view";
 import CompetitionList from "./competitionList";
 
-const CompetitionTab = () => {
+type TCompetitionTabProps = {
+    actionButton: React.ReactNode;
+};
+
+const CompetitionTab = ({ actionButton }: TCompetitionTabProps) => {
     const [index, setIndex] = useState(0);
     const [routes] = useState([
         { key: "Beginner", title: "Beginner" },
@@ -14,14 +18,13 @@ const CompetitionTab = () => {
 
     const navigation = useNavigation();
     const renderScene = ({ route }: any) => {
-        switch (route.key) {
-            case "Beginner":
-                return (
-                    <CompetitionList navigation={navigation} difficulty={route.key} />
-                );
-            default:
-                return;
-        }
+        return (
+            <CompetitionList
+                navigation={navigation}
+                difficulty={route.key}
+                actionButton={actionButton}
+            />
+        );
     };
 
     return (
@@ -29,7 +32,6 @@ const CompetitionTab = () => {
             navigationState={{ index, routes }}
             renderScene={renderScene}
             onIndexChange={setIndex}
-            style={{ overflow: "scroll" }}
             renderTabBar={(props) => (
                 <TabBar
                     {...props}
@@ -49,7 +51,6 @@ const CompetitionTab = () => {
 const styles = StyleSheet.create({
     tabBar: {
         backgroundColor: "transparent",
-        paddingHorizontal: -26,
         width: "100%",
     },
     tabBarText: {

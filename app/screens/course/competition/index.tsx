@@ -1,21 +1,53 @@
 import { Icon } from "@rneui/base";
+import { Fragment, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Container from "../../../common/components/container";
 import { MAIN_THEME } from "../../../common/constants";
 import CompetitionTab from "./components/competitionTab";
+import { TScreenProp } from "../../types";
+import CreateCompetitionModal from "./components/createCompetitionModal";
 
-const CompetitionHome = () => {
+type TCreateNewButtonProps = {
+    setIsOpenCreateModal: (value: boolean) => void;
+};
+
+const CreateNewButton = ({ setIsOpenCreateModal }: TCreateNewButtonProps) => {
     return (
-        <Container scrollable>
-            <CompetitionTab />
-            <TouchableOpacity style={styles.newBattleButton}>
-                <Icon name="add-outline" type="ionicon" color="#888888" />
-                <Text style={styles.newBattleButtonText}>
-                    Create new battle
-                </Text>
-            </TouchableOpacity>
-        </Container>
+        <TouchableOpacity
+            style={styles.newBattleButton}
+            onPress={() => setIsOpenCreateModal(true)}
+        >
+            <Icon name="add-outline" type="ionicon" color="#888888" />
+            <Text style={styles.newBattleButtonText}>Create new battle</Text>
+        </TouchableOpacity>
     );
+};
+
+const CompetitionHome = ({ navigation }: TScreenProp) => {
+    const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
+
+    const renderScreen = () => {
+        if (isOpenCreateModal) {
+            navigation.setOptions({ headerShown: false });
+            return (
+                <CreateCompetitionModal
+                    isOpen={isOpenCreateModal}
+                    setIsOpen={setIsOpenCreateModal}
+                />
+            );
+        }
+        return (
+            <CompetitionTab
+                actionButton={
+                    <CreateNewButton
+                        setIsOpenCreateModal={setIsOpenCreateModal}
+                    />
+                }
+            />
+        );
+    };
+
+    return <Container>{renderScreen()}</Container>;
 };
 
 const styles = StyleSheet.create({
