@@ -1,13 +1,12 @@
-import { StyleSheet, Text, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import Button from "../../common/components/button";
+import React from "react";
+import { StyleSheet, ScrollView, Text, View } from "react-native";
 import { TScreenProp } from "../types";
-import TextField from "./components/TextField";
-import DescriptionField from "./components/DescriptionField";
-import UploadImageField from "./components/UploadImageField";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import TextField from "../hazard/components/TextField";
+import DescriptionField from "../hazard/components/DescriptionField";
+import Button from "../../common/components/button";
 
-const NearMissPage = ({ navigation }: TScreenProp) => {
+const createTrainingPage = ({ navigation }: TScreenProp) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.title}>
@@ -18,46 +17,28 @@ const NearMissPage = ({ navigation }: TScreenProp) => {
           onPress={() => navigation.pop()}
         />
         <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
-          Near Miss
+          Create training
         </Text>
       </View>
-
-      <UploadImageField />
-
-      <TextField
-        title="Report Title"
-        iconName="report"
-        placeholder="Input title"
-      />
-      <TextField
-        title="Category of incident"
-        iconName="category"
-        placeholder="Input category of incident"
-      />
-      <TextField
-        title="Location"
-        iconName="location-on"
-        placeholder="Input location"
-      />
       <TextField
         title="Date & Time"
         iconName="calendar-today"
         placeholder="Input time of incident"
       />
       <TextField
-        title="Personnel involved"
+        title="Invite people"
         iconName="people"
-        placeholder="Input personnel involved"
-      />
-      <DescriptionField
-        title="Description"
-        iconName="description"
-        placeholder="Input description"
+        placeholder="Add people"
       />
       <TextField
-        title="Type of hazard"
-        iconName="wb-sunny"
-        placeholder="Input type of hazard"
+        title="Location"
+        iconName="location-on"
+        placeholder="Input location"
+      />
+      <DescriptionField
+        title="Goals"
+        iconName="location-on"
+        placeholder="Input goals for session"
       />
       <View style={{ marginTop: 30, marginBottom: 140 }}>
         <Button
@@ -75,7 +56,8 @@ const NearMissPage = ({ navigation }: TScreenProp) => {
   );
 };
 
-export default NearMissPage;
+export default createTrainingPage;
+
 const styles = StyleSheet.create({
   container: {
     width: "100%",
