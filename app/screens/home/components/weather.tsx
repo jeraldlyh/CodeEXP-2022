@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
-import { MAIN_THEME_COLOR } from "../../../common/constants";
+import { MAIN_THEME
+ } from "../../../common/constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 type HourlyWeatherProps = {
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
     textAlign: "justify",
   },
   location: {
-    color: MAIN_THEME_COLOR.GREEN,
+    color: MAIN_THEME.COLOR.GREEN,
     fontFamily: "Poppins-SemiBold",
     fontSize: 28,
   },
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
   },
   hourlyWeatherTime: {
     fontSize: 13,
-    color: MAIN_THEME_COLOR.GREEN,
+    color: MAIN_THEME.COLOR.GREEN,
   },
   hourlyWeatherTemperature: {
     fontSize: 13,

@@ -1,7 +1,8 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Text, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { MAIN_THEME_COLOR } from "../../common/constants";
+import { MAIN_THEME
+ } from "../../common/constants";
 import { TScreenProp } from "../types";
 import { Card } from "./settings";
 
@@ -49,12 +50,12 @@ function ProfilePage({ navigation }: TScreenProp) {
             <Icon
               name="calendar-today"
               size={23}
-              color={MAIN_THEME_COLOR.GREEN}
+              color={MAIN_THEME.COLOR.GREEN}
             />
             <Text style={styles.summaryText}>johndoe@gmail.com</Text>
           </View>
           <View style={styles.summaryContent}>
-            <Icon name="cellphone" size={23} color={MAIN_THEME_COLOR.GREEN} />
+            <Icon name="cellphone" size={23} color={MAIN_THEME.COLOR.GREEN} />
             <Text style={styles.summaryText}>+65 9123 4567</Text>
           </View>
         </View>
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   pointsContainer: {
     display: "flex",
     flexDirection: "row",
-    backgroundColor: MAIN_THEME_COLOR.GREEN,
+    backgroundColor: MAIN_THEME.COLOR.GREEN,
     height: 30,
     alignItems: "center",
     marginLeft: 20,

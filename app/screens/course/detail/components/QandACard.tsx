@@ -1,14 +1,14 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon } from "@rneui/base";
 
 type QandACardProps = {
-    header: string,
-    description: string,
-    upvote: number,
-    comment: number,
-    type: number
-}
+    header: string;
+    description: string;
+    upvote: number;
+    comment: number;
+    type: number;
+};
 
 export default function QandACard(props: QandACardProps) {
     return (
@@ -24,19 +24,19 @@ export default function QandACard(props: QandACardProps) {
         >
             {props.type === 1 ? (
                 <Image
-                    source={require("../../../assets/profile/profile1.png")}
+                    source={require("../../../../assets/profile/profile1.png")}
                     style={styles.image}
                 />
             ) : null}
             {props.type === 2 ? (
                 <Image
-                    source={require("../../../assets/profile/profile2.png")}
+                    source={require("../../../../assets/profile/profile2.png")}
                     style={styles.image}
                 />
             ) : null}
             {props.type === 3 ? (
                 <Image
-                    source={require("../../../assets/profile/profile3.png")}
+                    source={require("../../../../assets/profile/profile3.png")}
                     style={styles.image}
                 />
             ) : null}

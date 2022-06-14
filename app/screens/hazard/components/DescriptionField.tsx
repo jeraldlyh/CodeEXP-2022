@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-import { MAIN_THEME_COLOR } from "../../../common/constants";
+import { MAIN_THEME
+ } from "../../../common/constants";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import React, { useState } from "react";
 
@@ -17,7 +18,7 @@ const DescriptionField = (props: DescriptionFieldProps) => {
       <View style={styles.headers}>
         <MaterialIcons
           name={props.iconName}
-          color={MAIN_THEME_COLOR.GREEN}
+          color={MAIN_THEME.COLOR.GREEN}
           size={27}
         />
         <Text style={styles.title}>{props.title}</Text>

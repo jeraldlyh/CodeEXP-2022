@@ -7,7 +7,8 @@ import {
   ScrollView,
 } from "react-native";
 
-import { MAIN_THEME_COLOR } from "../../common/constants";
+import { MAIN_THEME
+ } from "../../common/constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TScreenProp } from "../types";
 import Button from "../../common/components/button";
@@ -39,7 +40,7 @@ export const Card = (props: any) => {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <View style={{ width: "10%", marginLeft: 6 }}>
-        <Icon name={props.icon} size={25} color={MAIN_THEME_COLOR.GREEN} />
+        <Icon name={props.icon} size={25} color={MAIN_THEME.COLOR.GREEN} />
       </View>
       <View
         style={{
@@ -55,7 +56,7 @@ export const Card = (props: any) => {
           width: "7%",
         }}
       >
-        <Icon name="chevron-right" size={25} color={MAIN_THEME_COLOR.GREEN} />
+        <Icon name="chevron-right" size={25} color={MAIN_THEME.COLOR.GREEN} />
       </View>
     </TouchableOpacity>
   );

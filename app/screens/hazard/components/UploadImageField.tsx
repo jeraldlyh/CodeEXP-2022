@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { MAIN_THEME_COLOR } from "../../../common/constants";
+import { MAIN_THEME
+ } from "../../../common/constants";
 
 const UploadImageField = () => {
   return (
     <>
       <View style={[styles.headers]}>
-        <Icon name="cloud-upload" color={MAIN_THEME_COLOR.GREEN} size={20} />
+        <Icon name="cloud-upload" color={MAIN_THEME.COLOR.GREEN} size={20} />
         <Text
           style={{
             marginLeft: 10,

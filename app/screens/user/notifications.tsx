@@ -7,7 +7,8 @@ import {
   ScrollView,
 } from "react-native";
 
-import { MAIN_THEME_COLOR } from "../../common/constants";
+import { MAIN_THEME
+ } from "../../common/constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TScreenProp } from "../types";
 
@@ -43,7 +44,7 @@ const Notification = (props: any) => {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <View style={{ width: "15%", marginLeft: 8 }}>
-        <Icon name={props.icon} size={25} color={MAIN_THEME_COLOR.GREEN} />
+        <Icon name={props.icon} size={25} color={MAIN_THEME.COLOR.GREEN} />
       </View>
       <View
         style={{

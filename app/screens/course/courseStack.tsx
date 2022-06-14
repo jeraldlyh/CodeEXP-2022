@@ -4,6 +4,8 @@ import CompetitionHome from "./competition";
 import CourseHome from "./courseHome";
 import Header from "../../common/components/header";
 import CompetitionScreen from "./competition/components/competitionScreen";
+import IndividualCourse from "./detail/individualCourse";
+import Lesson from "./detail/lesson";
 
 const Course = createStackNavigator();
 
@@ -19,6 +21,8 @@ const CourseStack = () => {
                 },
             }}
         >
+            <Course.Screen name="Java" component={IndividualCourse} />
+            <Course.Screen name="Lesson" component={Lesson} />
             <Course.Screen
                 name="CourseHome"
                 component={CourseHome}

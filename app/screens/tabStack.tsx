@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/base";
 import { getHeaderTitle } from "@react-navigation/elements";
 import HomeStack from "./home/homeStack";
-import CourseStack from "./course/courseStack";
 import Header from "../common/components/header";
+import CourseStack from "./course/courseStack";
 
 const Tab = createBottomTabNavigator();
 
