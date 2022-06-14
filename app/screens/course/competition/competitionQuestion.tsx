@@ -4,24 +4,32 @@ import { View, Image, StyleSheet, Text } from 'react-native';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MAIN_THEME } from "../../../common/constants";
 
-export default function CompetitionQuestion() {
+
+type QuestionProps ={
+    question:string,
+    setter:string,
+    rank:string,
+    title:string,
+    points:number
+}
+export default function CompetitionQuestion(props:QuestionProps) {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
                 <View style={styles.blurContainer}>
 
                     <View style={{ width: "100%", justifyContent: "space-between", flexDirection: "row", alignItems: "center" }}>
-                        <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18, }}>Setting up for signal sets</Text>
-                        <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 9, }}> +50 points</Text>
+                        <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18, }}>{props.title}</Text>
+                        <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 9, }}> +{props.points} points</Text>
                     </View>
                     <View style={{ flexDirection: "row", alignItems: "center", marginTop: 10 }}>
                         <Image source={require("../../../assets/profile/profile1.png")} />
                         <View style={{ marginLeft: 10 }}>
                             <Text style={{ fontFamily: "Poppins-Normal", fontSize: 11 }}>
-                                Nicholas Ong
+                                {props.setter}
                             </Text>
                             <Text style={{ fontFamily: "Poppins-Normal", fontSize: 10 }}>
-                                Sergeant
+                                {props.rank}
                             </Text>
                         </View>
                     </View>
@@ -54,7 +62,7 @@ export default function CompetitionQuestion() {
                     </View>
                 </View>
                 <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 20, marginTop: 20 }}>
-                    Add question here...
+                    {props.question}
                 </Text>
 
                 <TouchableOpacity containerStyle={{ borderRadius: 14, marginTop: 20, alignItems: "center", paddingVertical: 10, width: "100%", justifyContent: "center", borderWidth: 1 }}>
