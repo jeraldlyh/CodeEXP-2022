@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import * as Font from "expo-font";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import RootStack from "./screens/rootStack";
 import { AuthProvider } from "./providers/auth";
+import Categories from "./screens/course/components/Categories";
+import SuggestedCards from "./screens/course/components/SuggestedCards";
+import CourseHome from "./screens/course/CourseHome";
+import CourseStack from "./screens/course/CourseStack";
+
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -27,11 +32,14 @@ export default function App() {
     return (
         <SafeAreaProvider>
             {isLoaded ? (
-                <AuthProvider>
-                    <NavigationContainer>
-                        <RootStack />
-                    </NavigationContainer>
-                </AuthProvider>
+                // <AuthProvider>
+                <NavigationContainer>
+                    {/* <RootStack /> */}
+                    <CourseStack />
+                </NavigationContainer>
+                // </AuthProvider>
+
+
             ) : (
                 <View>
                     <Text>Loading...</Text>
