@@ -12,7 +12,7 @@ const HazardHomepage = ({ navigation }: TScreenProp) => {
         return (
             <TouchableOpacity
                 containerStyle={{ width: "100%" }}
-                onPress={() => navigation.push("HazardReporting")}
+                onPress={() => navigation.push(props.title)}
             >
                 <View style={styles.singleOption}>
                     <View style={styles.singleOptionContainer}>
@@ -27,9 +27,6 @@ const HazardHomepage = ({ navigation }: TScreenProp) => {
 
     return (
         <View style={styles.container}>
-            <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
-                Open Report
-            </Text>
             <Text style={styles.subheader}>Area of concern</Text>
             <ReportOption
                 imageSource={require("../../assets/hazard/hazard.png")}
@@ -37,11 +34,11 @@ const HazardHomepage = ({ navigation }: TScreenProp) => {
             />
             <ReportOption
                 imageSource={require("../../assets/hazard/safety.png")}
-                title="Safety concern"
+                title="Safety Concern"
             />
             <ReportOption
                 imageSource={require("../../assets/hazard/near-miss.png")}
-                title="Near miss"
+                title="Near Miss"
             />
         </View>
     );
@@ -52,7 +49,7 @@ const styles = StyleSheet.create({
     container: {
         width: "100%",
         height: "100%",
-        paddingTop: 50,
+        paddingTop: 10,
         paddingHorizontal: 20,
         alignItems: "center",
         backgroundColor: "#FFF",
