@@ -12,7 +12,7 @@ export type TCompetition = {
 };
 
 export enum EDifficulty {
-    Easy,
-    Intermediate,
-    Advanced,
+    Easy = "Easy",
+    Intermediate = "Intermediate",
+    Advanced = "Advanced",
 }
