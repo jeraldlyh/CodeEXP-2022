@@ -11,14 +11,7 @@ import { TScreenProp } from "../types";
 const SafetyConcernsPage = ({ navigation }: TScreenProp) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
+      <View style={styles.title}>
         <Icon
           name="arrow-left"
           size={20}
@@ -100,5 +93,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     marginTop: 10,
     borderRadius: 8,
+  },
+  title: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
 });

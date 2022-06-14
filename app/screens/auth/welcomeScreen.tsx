@@ -8,7 +8,7 @@ import {
   backgroundThree,
 } from "../../assets/welcome-screen";
 import Button from "../../common/components/button";
-import { MAIN_THEME_COLOR } from "../../common/constants";
+import { MAIN_THEME } from "../../common/constants";
 import { TScreenProp } from "../types";
 
 const Title = () => {

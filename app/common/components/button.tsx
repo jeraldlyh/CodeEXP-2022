@@ -6,8 +6,14 @@ type TButtonProps = {
     textColor: string;
     children: string | React.ReactNode;
     onPress: () => void;
-    height: number;
-    width: number;
+    height?: number;
+    width?: number;
+    style?: {
+        background?: any;
+        text?: any;
+        buttonWrapper?: any;
+        buttonContainer?: any;
+    }; // Overwrite default styles
 };
 
 const Button = ({
@@ -17,21 +23,25 @@ const Button = ({
     children,
     height,
     width,
+    style,
 }: TButtonProps) => {
     const styles = StyleSheet.create({
         background: {
             backgroundColor: `${backgroundColor}`,
             borderRadius: 14,
-            height,
-            width,
+            ...(height ? { height } : { height: "100%" }),
+            ...(width ? { width } : { width: "100%" }),
+            ...style?.background,
         },
         text: {
             fontFamily: "Poppins-Bold",
             color: `${textColor}`,
             fontSize: 17,
+            ...style?.text,
         },
         buttonWrapper: {
             width: "100%",
+            ...style?.buttonWrapper,
         },
         buttonContainer: {
             display: "flex",
@@ -40,6 +50,7 @@ const Button = ({
             justifyContent: "center",
             height: "100%",
             width: "100%",
+            ...style?.buttonContainer,
         },
     });
 
