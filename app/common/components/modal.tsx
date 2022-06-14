@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
     Dimensions,
     Keyboard,
@@ -8,14 +8,14 @@ import {
 import { BlurView } from "expo-blur";
 import { TModalProp } from "../../screens/course/competition/types";
 
-const Modal = ({ isOpen, setIsOpen, children }: TModalProp) => {
+const Modal = ({ body }: TModalProp) => {
     return (
         <BlurView intensity={95} tint="light" style={styles.modalBackground}>
             <TouchableWithoutFeedback
                 onPress={Keyboard.dismiss}
                 accessible={false}
             >
-                {children}
+                <Fragment>{body}</Fragment>
             </TouchableWithoutFeedback>
         </BlurView>
     );

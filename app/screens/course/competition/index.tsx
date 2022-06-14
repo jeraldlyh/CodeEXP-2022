@@ -5,17 +5,18 @@ import Container from "../../../common/components/container";
 import { MAIN_THEME } from "../../../common/constants";
 import CompetitionTab from "./components/competitionTab";
 import { TScreenProp } from "../../types";
-import CreateCompetitionModal from "./components/createCompetitionModal";
+import CreateCompetitionModal from "./components/createCompetitionModalBody";
+import { useModal } from "../../../providers/modal";
 
 type TCreateNewButtonProps = {
-    setIsOpenCreateModal: (value: boolean) => void;
+    handlePress: () => void;
 };
 
-const CreateNewButton = ({ setIsOpenCreateModal }: TCreateNewButtonProps) => {
+const CreateNewButton = ({ handlePress }: TCreateNewButtonProps) => {
     return (
         <TouchableOpacity
             style={styles.newBattleButton}
-            onPress={() => setIsOpenCreateModal(true)}
+            onPress={handlePress}
         >
             <Icon name="add-outline" type="ionicon" color="#888888" />
             <Text style={styles.newBattleButtonText}>Create new battle</Text>
@@ -24,30 +25,21 @@ const CreateNewButton = ({ setIsOpenCreateModal }: TCreateNewButtonProps) => {
 };
 
 const CompetitionHome = ({ navigation }: TScreenProp) => {
-    const [isOpenCreateModal, setIsOpenCreateModal] = useState<boolean>(false);
-
-    const renderScreen = () => {
-        if (isOpenCreateModal) {
-            navigation.setOptions({ headerShown: false });
-            return (
-                <CreateCompetitionModal
-                    isOpen={isOpenCreateModal}
-                    setIsOpen={setIsOpenCreateModal}
-                />
-            );
-        }
-        return (
-            <CompetitionTab
-                actionButton={
-                    <CreateNewButton
-                        setIsOpenCreateModal={setIsOpenCreateModal}
-                    />
-                }
-            />
-        );
+    const { setIsOpen, setModal } = useModal();
+    const handlePress = () => {
+        setModal({
+            body: <CreateCompetitionModal />,
+        });
+        setIsOpen(true);
     };
 
-    return <Container>{renderScreen()}</Container>;
+    return (
+        <Container>
+            <CompetitionTab
+                actionButton={<CreateNewButton handlePress={handlePress} />}
+            />
+        </Container>
+    );
 };
 
 const styles = StyleSheet.create({
