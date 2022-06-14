@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Image, StyleSheet, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Button from "../../../../common/components/button";
 import { MAIN_THEME } from "../../../../common/constants";
 import { TScreenProp } from "../../../types";
 
@@ -9,13 +10,37 @@ export default function CompetitionQuestion({
     route,
 }: TScreenProp) {
     const { question, title, amount, options, setter } = route.params;
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+
+    useEffect(() => {
+        navigation.setOptions({ title });
+    }, []);
 
     const renderQuestions = () => {
-        return options.map((option: string) => (
-            <TouchableOpacity containerStyle={styles.optionContainer}>
-                <Text style={styles.optionText}>{option}</Text>
+        return options.map((option: string, index: number) => (
+            <TouchableOpacity
+                containerStyle={{
+                    ...styles.optionContainer,
+                    ...(activeIndex === index && {
+                        backgroundColor: MAIN_THEME.COLOR.LIGHT_GREEN,
+                    }),
+                }}
+                onPress={() => setActiveIndex(index)}
+            >
+                <Text
+                    style={{
+                        ...styles.optionText,
+                    }}
+                >
+                    {option}
+                </Text>
             </TouchableOpacity>
         ));
+    };
+
+    const handleSubmit = () => {
+        console.log("Sending API");
+        navigation.navigate("CompetitionHome");
     };
 
     return (
@@ -38,7 +63,7 @@ export default function CompetitionQuestion({
                         <Text
                             style={{
                                 fontFamily: "Poppins-SemiBold",
-                                fontSize: 9,
+                                fontSize: 15
                             }}
                         >
                             {" "}
@@ -58,8 +83,8 @@ export default function CompetitionQuestion({
                         <View style={{ marginLeft: 10 }}>
                             <Text
                                 style={{
-                                    fontFamily: "Poppins-Normal",
-                                    fontSize: 11,
+                                    fontFamily: "Poppins-SemiBold",
+                                    fontSize: 18,
                                 }}
                             >
                                 {setter}
@@ -67,10 +92,10 @@ export default function CompetitionQuestion({
                             <Text
                                 style={{
                                     fontFamily: "Poppins-Normal",
-                                    fontSize: 10,
+                                    fontSize: 15,
                                 }}
                             >
-                                {1}
+                                #1
                             </Text>
                         </View>
                     </View>
@@ -127,27 +152,15 @@ export default function CompetitionQuestion({
                 </Text>
 
                 {renderQuestions()}
-                <TouchableOpacity
-                    containerStyle={{
-                        marginTop: 60,
-                        backgroundColor: MAIN_THEME.COLOR.GREEN,
-                        borderRadius: 14,
-                        alignItems: "center",
-                        paddingVertical: 10,
-                        width: "100%",
-                        justifyContent: "center",
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontFamily: "Poppins-Normal",
-                            fontSize: 15,
-                            color: "white",
-                        }}
-                    >
-                        Confirm
-                    </Text>
-                </TouchableOpacity>
+
+                <Button
+                    style={{ background: { marginTop: 30 } }}
+                    backgroundColor={MAIN_THEME.COLOR.GREEN}
+                    textColor="white"
+                    children="Confirm"
+                    height={50}
+                    onPress={() => handleSubmit()}
+                />
             </View>
         </View>
     );
@@ -170,11 +183,10 @@ const styles = StyleSheet.create({
         zIndex: 1000,
         width: "90%",
         backgroundColor: "#F4F4F4",
-        padding: 10,
+        padding: 20,
         borderRadius: 10,
         // alignItems:"center",
     },
-    timerContainer: {},
     restContainer: {
         padding: 40,
         width: "100%",
@@ -182,7 +194,7 @@ const styles = StyleSheet.create({
     },
     optionContainer: {
         borderRadius: 14,
-        marginTop: 20,
+        marginTop: 15,
         alignItems: "center",
         paddingVertical: 10,
         width: "100%",
