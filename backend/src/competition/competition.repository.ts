@@ -27,6 +27,17 @@ export class CompetitionRepository {
         return result.data();
     }
 
+    async findOne(id: string): Promise<Competition> {
+        const result = await firebase
+            .firestore()
+            .collection(this.rootCollection)
+            .doc(id)
+            .withConverter(competitionConverter)
+            .get();
+
+        return result.data();
+    }
+
     async findAll(): Promise<Competition[]> {
         const result = await firebase
             .firestore()
@@ -35,6 +46,15 @@ export class CompetitionRepository {
             .withConverter(competitionConverter)
             .get();
 
-        return result.docs.map((doc) => doc.data());
+        return result.docs.map((doc) => {
+            return {
+                ...doc.data(),
+                id: doc.id,
+            };
+        });
+    }
+
+    async update(id: string, dto: Competition): Promise<void> {
+        await firebase.firestore().collection(this.rootCollection).doc(id).withConverter(competitionConverter).set(dto);
     }
 }

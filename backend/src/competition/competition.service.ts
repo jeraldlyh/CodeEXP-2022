@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { CompetitionRepository } from "src/competition/competition.repository";
 import { CreateCompetitionDto } from "src/competition/dto/create-competition.dto";
-import { sample } from "lodash";
+import { merge, sample } from "lodash";
 import { COMPETITION_MOCK_DATA, TQuiz } from "src/competition/competition.mock";
 import { User } from "src/users/user.decorator";
 import { UsersService } from "src/users/users.service";
@@ -16,7 +16,7 @@ export class CompetitionService {
     }
 
     async create(@User() user, createCompetitionDto: CreateCompetitionDto): Promise<{ docId: string } & TQuiz> {
-        const quiz = this.getRandomQuiz(createCompetitionDto.course);
+        const quiz = this._getRandomQuiz(createCompetitionDto.course);
         const userProfile = await this.usersService.findOne(user.username);
 
         const dto = {
@@ -50,7 +50,26 @@ export class CompetitionService {
         };
     }
 
-    getRandomQuiz(course: string): TQuiz {
+    async findOne(id: string): Promise<Competition> {
+        return await this.competitionRepository.findOne(id);
+    }
+
+    async join(@User() user, body) {
+        const userProfile = await this.usersService.findOne(user.username);
+        const competition = await this.findOne(body.id);
+
+        const dto = merge(competition, {
+            player: {
+                name: userProfile.username,
+                avatar: userProfile.avatar,
+                isEntered: true,
+            },
+        });
+
+        return await this.competitionRepository.update(body.id, dto);
+    }
+
+    _getRandomQuiz(course: string): TQuiz {
         return sample(COMPETITION_MOCK_DATA[course]);
     }
 }

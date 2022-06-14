@@ -3,6 +3,7 @@ import { getHeaderTitle } from "@react-navigation/elements";
 import CompetitionHome from "./competition";
 import CourseHome from "./courseHome";
 import Header from "../../common/components/header";
+import CompetitionScreen from "./competition/components/competitionScreen";
 
 const Course = createStackNavigator();
 
@@ -28,6 +29,7 @@ const CourseStack = () => {
                 component={CompetitionHome}
                 options={{ title: "Competition" }}
             />
+            <Course.Screen name="CompetitionScreen" component={CompetitionScreen}/>
         </Course.Navigator>
     );
 };

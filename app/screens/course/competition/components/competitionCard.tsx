@@ -6,18 +6,29 @@ import { cybersecurityImage } from "../../../../assets/courses";
 import Card from "../../../../common/components/card";
 import { MAIN_THEME } from "../../../../common/constants";
 import { useProfile } from "../../../../hooks/useProfile";
+import { CompetitionService } from "../../../../services/competition";
 
 type TCompetitionProps = {
     title: string;
     amount: string;
+    competitionId: string;
 };
 
-const CompetitionBody = ({ amount }: Pick<TCompetitionProps, "amount">) => {
+type TCompetitionBodyProps = Pick<
+    TCompetitionProps,
+    "amount" | "competitionId"
+>;
+
+const CompetitionBody = ({ amount, competitionId }: TCompetitionBodyProps) => {
     const { data, loading } = useProfile();
 
     if (loading) {
         return <Text>Loading profile...</Text>;
     }
+
+    const handleJoin = async (id: string) => {
+        const result = await CompetitionService.joinCompetition(id);
+    };
 
     return (
         <Fragment>
@@ -34,7 +45,10 @@ const CompetitionBody = ({ amount }: Pick<TCompetitionProps, "amount">) => {
                     <Text style={styles.profileText}>{data.unit}</Text>
                 </View>
             </View>
-            <TouchableOpacity style={styles.buttonContainer}>
+            <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={() => handleJoin(competitionId)}
+            >
                 <Text
                     style={{
                         ...styles.buttonText,
@@ -48,11 +62,20 @@ const CompetitionBody = ({ amount }: Pick<TCompetitionProps, "amount">) => {
     );
 };
 
-const CompetitionCard = ({ title, amount }: TCompetitionProps) => {
+const CompetitionCard = ({
+    title,
+    amount,
+    competitionId,
+}: TCompetitionProps) => {
     return (
         <Card
             title={title}
-            body={<CompetitionBody amount={amount} />}
+            body={
+                <CompetitionBody
+                    amount={amount}
+                    competitionId={competitionId}
+                />
+            }
             imageSrc={cybersecurityImage}
         />
     );
