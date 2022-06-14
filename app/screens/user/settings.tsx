@@ -27,7 +27,7 @@ const SettingOption = (props: any) => {
       shadowOpacity: 0.2,
       shadowRadius: 0.5,
       marginBottom: 12,
-      backgroundColor: "#F6F6F6",
+      backgroundColor: "#F9F9F9",
     },
     text: {
       fontSize: 15,
