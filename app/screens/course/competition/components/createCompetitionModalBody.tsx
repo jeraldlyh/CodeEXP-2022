@@ -4,35 +4,50 @@ import {
     Text,
     TouchableOpacity,
     TextInput,
+    Keyboard,
 } from "react-native";
 import { Icon } from "@rneui/base";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CATEGORY_DATA, MAIN_THEME } from "../../../../common/constants";
 import { useModal } from "../../../../providers/modal";
 import Button from "../../../../common/components/button";
-
-type TCompetition = {
-    course: string;
-    difficulty: string;
-    amount: number;
-};
+import { EDifficulty } from "../types";
+import { CompetitionService } from "../../../../services/competition";
 
 const CreateCompetitionModalBody = () => {
     const { setIsOpen } = useModal();
     const [isCourseOpen, setIsCourseOpen] = useState<boolean>(false);
     const [selectedCourse, setSelectedCourse] = useState(null);
-    const courseOptions = CATEGORY_DATA.map((data) => {
-        return {
-            label: data.category,
-            value: data.category,
-        };
-    });
+    const courseOptions = CATEGORY_DATA.map((data) => ({
+        label: data.category,
+        value: data.category,
+    }));
 
     const [isDifficultyOpen, setIsDifficultyOpen] = useState<boolean>(false);
     const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+    const difficultyOptions = Object.values(EDifficulty)
+        .filter((data) => typeof data === "string")
+        .map((data) => ({
+            label: data as string,
+            value: data as string,
+        }));
 
     const [amount, setAmount] = useState<string>("");
+
+    useEffect(() => {
+        console.log(selectedCourse, selectedDifficulty, amount);
+    }, [selectedCourse, selectedDifficulty, amount]);
+
+    const handlePress = async () => {
+        if (selectedDifficulty && selectedCourse && amount) {
+            await CompetitionService.createCompetition({
+                difficulty: selectedDifficulty,
+                course: selectedCourse,
+                amount: amount,
+            });
+        }
+    };
 
     return (
         <View style={styles.modalContainer}>
@@ -42,7 +57,7 @@ const CreateCompetitionModalBody = () => {
             >
                 <Icon name="close-circle-outline" type="ionicon" />
             </TouchableOpacity>
-            <View style={styles.inputContainer}>
+            <View style={{ ...styles.inputContainer, zIndex: 102 }}>
                 <Text style={styles.pickerTitle}>Course</Text>
                 <DropDownPicker
                     placeholder="Select"
@@ -60,10 +75,9 @@ const CreateCompetitionModalBody = () => {
                     multiple={false}
                     open={isCourseOpen}
                     setOpen={setIsCourseOpen}
-                    zIndex={102}
                 />
             </View>
-            <View style={styles.inputContainer}>
+            <View style={{ ...styles.inputContainer, zIndex: 101 }}>
                 <Text style={styles.pickerTitle}>Difficulty</Text>
                 <DropDownPicker
                     placeholder="Select"
@@ -77,32 +91,29 @@ const CreateCompetitionModalBody = () => {
                     showArrowIcon
                     value={selectedDifficulty}
                     setValue={setSelectedDifficulty}
-                    items={courseOptions}
+                    items={difficultyOptions}
                     multiple={false}
                     open={isDifficultyOpen}
                     setOpen={setIsDifficultyOpen}
-                    zIndex={101}
                 />
             </View>
             <View style={styles.inputContainer}>
                 <Text style={styles.pickerTitle}>Amount placed</Text>
-                <View>
-                    <TextInput
-                        placeholder="Enter a value"
-                        value={amount}
-                        onChangeText={setAmount}
-                        keyboardType="numeric"
-                        style={styles.amountInputContainer}
-                        placeholderTextColor="black"
-                    />
-                </View>
+                <TextInput
+                    placeholder="Enter a value"
+                    value={amount}
+                    onChangeText={setAmount}
+                    keyboardType="numeric"
+                    style={styles.amountInputContainer}
+                    placeholderTextColor="black"
+                />
             </View>
             <Button
                 backgroundColor={MAIN_THEME.COLOR.GREEN}
                 textColor="white"
                 height={50}
                 children="Create battle"
-                onPress={() => console.log("create ")}
+                onPress={handlePress}
                 style={{
                     text: { fontFamily: "Poppins-SemiBold" },
                     background: { marginTop: 25 },
@@ -124,7 +135,7 @@ const styles = StyleSheet.create({
     },
     closeButton: {
         alignSelf: "flex-end",
-        marginBottom: -10
+        marginBottom: -10,
     },
     pickerTitle: {
         fontFamily: "Poppins-Bold",

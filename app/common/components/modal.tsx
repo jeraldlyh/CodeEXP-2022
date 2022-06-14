@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import {
     Dimensions,
     Keyboard,
@@ -10,17 +10,23 @@ import { TModalProp } from "../../screens/course/competition/types";
 
 const Modal = ({ body, handleDismiss }: TModalProp) => {
     const handlePress = () => {
-        console.log("pressing")
         Keyboard.dismiss();
-        handleDismiss();
     };
 
     return (
-        <BlurView intensity={95} tint="light" style={styles.modalBackground}>
-            <TouchableWithoutFeedback onPress={handlePress} accessible={false}>
-                <Fragment>{body}</Fragment>
-            </TouchableWithoutFeedback>
-        </BlurView>
+        <TouchableWithoutFeedback
+            style={{ width: "100%", height: "100%" }}
+            onPress={handlePress}
+            accessible={false}
+        >
+            <BlurView
+                intensity={95}
+                tint="light"
+                style={styles.modalBackground}
+            >
+                {body}
+            </BlurView>
+        </TouchableWithoutFeedback>
     );
 };
 const styles = StyleSheet.create({

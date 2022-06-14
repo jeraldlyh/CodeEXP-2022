@@ -6,4 +6,18 @@ export const COMPETITION_MOCK_DATA = {
             answer: "15 June 1972",
         },
     ],
+    Armour: [
+        {
+            question: "What's the motto of Armour?",
+            options: ["Swift & Decisive", "Let's geddit", "Easy peasy"],
+            answer: "Swift & Decisive",
+        },
+    ],
+    Guards: [
+        {
+            question: "What's the date of origin for Guards?",
+            options: ["1 June 1975", "15 June 1998", "14 Aug 2022"],
+            answer: "1 June 1975",
+        },
+    ],
 };
