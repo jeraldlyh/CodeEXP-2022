@@ -1,216 +1,292 @@
-import { StatusBar } from "expo-status-bar";
-import { PermissionsAndroid, StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import moment from "moment";
-import { DAYS_OF_WEEKS, MAIN_THEME } from "../../../common/constants";
-import { Icon } from "@rneui/base";
-import Container from "../../../common/components/container";
+import { StatusBar } from 'expo-status-bar';
+import { PermissionsAndroid, StyleSheet, Text, View, Image } from 'react-native';
+import { Icon } from 'react-native-elements';
+import { MAIN_THEME } from '../../../common/constants';
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+
 
 export default function HomePage() {
-    const renderDates = () => {
-        let today = moment();
-        let start = moment().add(-3, "day");
-        const DAYS_TO_RENDER = 7;
-        const elements = [];
-
-        for (let i = 0; i < DAYS_TO_RENDER; i++) {
-            const isToday = start.isSame(today);
-
-            elements.push(
-                <View
-                    style={{
-                        ...styles.date,
-                        ...(isToday && {
-                            borderRadius: 10,
-                            backgroundColor: "#EFF1FC",
-                        }),
-                    }}
-                >
-                    <Text
-                        style={{
-                            fontFamily: "Poppins-Bold",
-                            fontSize: 18,
-                            ...(isToday && { color: MAIN_THEME.COLOR.GREEN }),
-                        }}
-                    >
-                        {start.date()}
-                    </Text>
-                    <Text
-                        style={{
-                            color: MAIN_THEME.COLOR.DARK_BLUE,
-                            ...(isToday && {
-                                color: MAIN_THEME.COLOR.GREEN,
-                                fontFamily: "Poppins-SemiBold",
-                            }),
-                        }}
-                    >
-                        {DAYS_OF_WEEKS[start.day()].substring(0, 3)}
-                    </Text>
-                </View>
-            );
-            start = start.add(1, "day");
-        }
-
-        return elements;
-    };
     return (
-        <Container scrollable>
+        <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.header}>
-                <Text
-                    style={{ color: MAIN_THEME.COLOR.DARK_BLUE, fontSize: 16 }}
-                >
-                    {moment().format("MMM DD, YYYY")}
-                </Text>
-                <Text style={{ fontFamily: "Poppins-Bold", fontSize: 30 }}>
-                    Today
-                </Text>
+                <Text style={{ color: "grey", fontFamily: "Poppins-Normal" }}>May 19,2022</Text>
+                <Text style={{ fontFamily: "Poppins-Bold", fontSize: 25 }}>Today</Text>
             </View>
-            <View style={styles.dateContainter}>{renderDates()}</View>
+            <View style={styles.dateContainter}>
+                <View style={styles.date}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        16
+                    </Text>
+                    <Text>
+                        Mo
+                    </Text>
+                </View>
+                <View style={styles.date}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        17
+                    </Text>
+                    <Text>
+                        Tu
+                    </Text>
+                </View>
+                <View style={styles.date}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        18
+                    </Text>
+                    <Text>
+                        Wed
+                    </Text>
+                </View>
+                <View style={styles.date}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        19
+                    </Text>
+                    <Text>
+                        Th
+                    </Text>
+                </View>
+                <View style={styles.date}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        20
+                    </Text>
+                    <Text>
+                        Fr
+                    </Text>
+                </View>
+                <View style={[styles.date, { borderRadius: 10, backgroundColor: "#f5f5f5" }]}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        21
+                    </Text>
+                    <Text>
+                        Sa
+                    </Text>
+                </View>
+                <View style={styles.date}>
+                    <Text style={{ fontWeight: "bold" }}>
+                        22
+                    </Text>
+                    <Text>
+                        Su
+                    </Text>
+                </View>
+            </View>
             <View style={styles.todaySchedule}>
-                <Text style={styles.subTitle}>Today's Schedule</Text>
-                <View style={styles.timeBlock}>
-                    <Text>09:00</Text>
+                <Text style={{ fontWeight: "bold" }}>Today's Schedule</Text>
+                <View style={[styles.timeBlock, { flexDirection: "row", alignItems: "center" }]}>
+                    <Text>
+                        09:00
+                    </Text>
                     <View
                         style={{
-                            borderRadius: 9999,
-                            width: 10,
-                            height: 10,
+                            width: "80%",
+                            height: 4,
+                            borderRadius: 9,
                             backgroundColor: MAIN_THEME.COLOR.GREEN,
-                            marginLeft: 10,
+                            marginLeft: 20
                         }}
-                    />
-                    <View
-                        style={{
-                            borderRadius: 36,
-                            backgroundColor: MAIN_THEME.COLOR.GREEN,
-                            width: "75%",
-                            height: 2,
-                            overflow: "hidden",
-                        }}
-                    />
-                    <View
-                        style={{
-                            borderRadius: 9999,
-                            width: 10,
-                            height: 10,
-                            backgroundColor: MAIN_THEME.COLOR.GREEN,
-                        }}
-                    />
+                    >
+                    </View>
                 </View>
                 <View style={styles.timeBlock}>
-                    <Text>10:00</Text>
+                    <Text>
+                        10:00
+                    </Text>
                 </View>
                 <View style={styles.timeBlock}>
-                    <Text>11:00</Text>
+                    <Text>
+                        11:00
+                    </Text>
                 </View>
             </View>
-            <Text style={{ ...styles.subTitle, marginTop: 30 }}>
+            <Text style={{ fontWeight: "bold", marginTop: 10 }}>
                 Upcoming Schedule
             </Text>
             <View style={styles.upcomingSchedule}>
-                <View
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        width: "100%",
-                    }}
-                >
-                    <Text style={{ ...styles.subTitle, flex: 1 }}>
-                        Reservist
-                    </Text>
-                    <Icon
-                        name="document-outline"
-                        style={styles.iconStyle}
-                        type="ionicon"
-                        iconStyle={{ color: MAIN_THEME.COLOR.GREEN }}
-                    />
+                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+
+                    <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 16 }}>Reservist</Text>
+                    <MaterialIcons name='description' size={20} color="#91B48C" />
                 </View>
-                <View
-                    style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginTop: 10,
-                        alignItems: "center",
-                    }}
-                >
-                    <Icon
-                        name="location"
-                        type="ionicon"
-                        style={styles.iconStyle}
-                        iconStyle={{ color: MAIN_THEME.COLOR.GREEN }}
-                        size={36}
-                    />
-                    <Text
-                        style={{
-                            fontFamily: "Poppins-Normal",
-                            marginLeft: 10,
-                            maxWidth: "30%",
-                        }}
-                    >
-                        Tekong Camp School 4
-                    </Text>
-                    <Text></Text>
-                </View>
-                <View style={styles.nextEvent}>
-                    <Text style={{ fontWeight: "bold" }}>
-                        Sunday,14 Aug 2022
-                    </Text>
-                    <Text>14:00-15:00</Text>
+                <View>
+                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <MaterialIcons name='location-on' size={20} color="#91B48C" />
+                        <View style={{ marginLeft: 10 }}>
+
+                            <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 12, marginTop: 10 }}>Add in some location</Text>
+                            <Text style={{ fontFamily: "Poppins-Normal", fontSize: 11, }}>more details on location</Text>
+                        </View>
+                    </View>
+                    <View style={styles.nextEvent}>
+                        <View style={{ flexDirection: "row", alignItems: "center" }}>
+                            <MaterialIcons name='calendar-today' size={20} color="#91B48C" />
+
+                            <Text style={{ fontFamily: "Poppins-Bold", marginLeft: 10, fontSize: 12 }}>Sunday,14 Aug 2022</Text>
+
+                        </View>
+                        <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 12, }}>14:00-15:00</Text>
+                    </View>
                 </View>
             </View>
             <View style={styles.weatherContainer}>
-                <Text style={{ fontWeight: "bold" }}>Tekong</Text>
+                <Text style={{ fontWeight: "bold", }}>Tekong</Text>
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>28°</Text>
+                <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+
+                    <SingleWeather day={12} temp={28} />
+                    <SingleWeather day={1} temp={28} />
+
+                    <SingleWeather day={2} temp={28} />
+
+                    <SingleWeather day={3} temp={28} />
+
+                    <SingleWeather day={4} temp={28} />
+
+                    <SingleWeather day={5} temp={28} />
+
+                </View>
             </View>
-        </Container>
+            <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18, marginTop: 20 }}>
+                Hazard Reporting
+            </Text>
+            <View style={styles.hazardReporting}>
+                <Image source={require("../../../assets/hazard/hazard.png")} style={{ width: "10%", height: 40 }}></Image>
+                <Text style={{ fontFamily: "Poppins-Normal", fontSize: 11, width: "40%" }}>
+                    You are currently not in
+                    or near any hazard zone
+                </Text>
+                <TouchableOpacity containerStyle={{ width: "40%", backgroundColor: MAIN_THEME.COLOR.GREEN, alignItems: "center", padding: 5, borderRadius: 8 }}>
+                    <Text style={{ color: "white", fontFamily: "Poppins-Normal" }}>
+                        Report hazard
+                    </Text>
+                </TouchableOpacity>
+            </View>
+            <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18, marginTop: 20 }}>
+                Self-regulated trainings
+            </Text>
+            <View style={[styles.hazardReporting, { flexDirection: "column" }]}>
+                <View style={{ flexDirection: "row", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
+
+                    <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 13 }}>
+                        Exercise and earn points
+                    </Text>
+                    <TouchableOpacity containerStyle={{ backgroundColor: MAIN_THEME.COLOR.GREEN, alignItems: "center", padding: 5, borderRadius: 8, width: "40%" }}>
+                        <Text style={{ color: "white", fontFamily: "Poppins-Normal" }}>
+                            Create Training
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <Text style={{ marginTop: 10, fontFamily: "Poppins-Normal", fontSize: 11, alignSelf: "flex-start" }}>
+                    Schedule self-regulated trainings here. Create or
+                    join trainings to earn points and redeem benefits!
+                </Text>
+            </View>
+
+            <View style={[styles.hazardReporting, { flexDirection: "column",marginTop:20 }]}>
+                <View style={{ flexDirection: "row", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
+
+                    <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 13 }}>
+                        Online training session
+                    </Text>
+                    <TouchableOpacity containerStyle={{ backgroundColor: MAIN_THEME.COLOR.GREEN, alignItems: "center", padding: 5, borderRadius: 8, width: "40%" }}>
+                        <Text style={{ color: "white", fontFamily: "Poppins-Normal" }}>
+                            View more
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.nextEvent}>
+                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <MaterialIcons name='calendar-today' size={20} color="#91B48C" />
+
+                        <Text style={{ fontFamily: "Poppins-Bold", marginLeft: 10, fontSize: 12 }}>Sunday,14 Aug 2022</Text>
+
+                    </View>
+                    <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 12, }}>14:00-15:00</Text>
+                </View>
+
+            </View>
+        </ScrollView>
     );
 }
 
+type dayProps = {
+    day: number,
+    temp: number
+}
+const SingleWeather = (props: dayProps) => {
+    return (
+        <View style={{ flexDirection: "column", justifyContent: "center" }}>
+            <Text style={{ fontFamily: "Poppins-Normal", fontSize: 10 }}>
+                {props.day}pm
+            </Text>
+            <MaterialIcons name='cloud' size={20} color="#52B6DF" />
+            <Text style={{ fontFamily: "Poppins-Normal", fontSize: 10 }}>
+                {props.temp}°
+            </Text>
+        </View>
+    )
+}
+
 const styles = StyleSheet.create({
-    iconStyle: {
-        backgroundColor: MAIN_THEME.COLOR.LIGHT_GREEN,
-        borderRadius: 14,
-        padding: 5,
-    },
-    subTitle: {
-        fontFamily: "Poppins-Bold",
-        fontSize: 18,
+    container: {
+        width: "100%",
+        paddingVertical: 30,
+        paddingHorizontal: 30,
+        // alignItems: "center",
+        backgroundColor: "#FFF",
     },
     header: {
         width: "100%",
-        flexDirection: "column",
-        marginTop: 15,
+        flexDirection: "column"
     },
     dateContainter: {
         width: "100%",
         marginTop: 30,
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "space-between"
+
     },
     date: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
         flexDirection: "column",
-        padding: 10,
+        padding: 10
     },
     todaySchedule: {
         width: "100%",
-        marginTop: 30,
+        marginTop: 20
     },
     timeBlock: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
         marginTop: 10,
         padding: 20,
         width: "100%",
-        backgroundColor: "#F5F5F5",
-        borderRadius: 10,
+        backgroundColor: "#f5f5f5",
+        borderRadius: 10
     },
     upcomingSchedule: {
-        marginTop: 20,
+        marginTop: 10,
+        padding: 20,
+        width: "100%",
+        shadowColor: "#000000",
+        shadowOpacity: 0.2,
+        borderRadius: 10,
+        shadowRadius: 2,
+        shadowOffset: {
+            height: 1,
+            width: 1
+        },
+        backgroundColor: '#fff',
+        flexDirection: "column",
+    },
+    nextEvent: {
+        marginTop: 10,
+        width: "100%",
+        borderRadius: 10,
+        backgroundColor: "#F3FBF4",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 10
+    },
+    weatherContainer: {
+        marginTop: 10,
         padding: 15,
         width: "100%",
         shadowColor: "#000000",
@@ -219,25 +295,19 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         shadowOffset: {
             height: 1,
-            width: 1,
+            width: 1
         },
-        backgroundColor: "#fff",
+        backgroundColor: '#fff',
         flexDirection: "column",
     },
-    nextEvent: {
+    hazardReporting: {
+        padding: 10,
         marginTop: 10,
-        width: "100%",
-        borderRadius: 10,
-        backgroundColor: "#f5faff",
         flexDirection: "row",
-        justifyContent: "space-between",
-        padding: 10,
-    },
-    weatherContainer: {
-        marginTop: 10,
-        padding: 10,
         width: "100%",
-        shadowColor: "#000000",
+        alignItems: "center",
+        justifyContent: "space-between",
+        shadowColor: '#000000',
         shadowOpacity: 0.2,
         borderRadius: 10,
         shadowRadius: 2,
@@ -245,7 +315,7 @@ const styles = StyleSheet.create({
             height: 1,
             width: 1,
         },
-        backgroundColor: "#fff",
-        flexDirection: "column",
-    },
+        backgroundColor: '#fff',
+    }
+
 });
