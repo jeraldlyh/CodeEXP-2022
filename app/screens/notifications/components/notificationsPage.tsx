@@ -7,11 +7,11 @@ import {
     ScrollView,
 } from "react-native";
 
-import { MAIN_THEME } from "../../common/constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { TScreenProp } from "../types";
+import { MAIN_THEME } from "../../../common/constants";
+import { TScreenProp } from "../../types";
 
-const Notification = (props: any) => {
+const SubNotification = (props: any) => {
     const styles = StyleSheet.create({
         container: {
             height: 80,
@@ -65,33 +65,21 @@ const Notification = (props: any) => {
 function NotificationsPage({ navigation }: TScreenProp) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.title}>
-                <Icon
-                    name="arrow-left"
-                    size={20}
-                    style={{ position: "absolute", left: 0 }}
-                    onPress={() => navigation.pop()}
-                />
-                <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
-                    Notifications
-                </Text>
-            </View>
-
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.subContainer}>
-                    <Notification
+                    <SubNotification
                         text="Call up on 28 May 2022"
                         time={2}
                         icon="lock-outline"
                         onPress={() => console.log("")}
                     />
-                    <Notification
+                    <SubNotification
                         text="Reservist on 14 May 2022"
                         time={11}
                         icon="calendar-today"
                         onPress={() => console.log("")}
                     />
-                    <Notification
+                    <SubNotification
                         text="Quiz submission due"
                         time={12}
                         icon="clipboard-list"
@@ -117,7 +105,6 @@ const styles = StyleSheet.create({
     },
     subContainer: {
         width: "80%",
-        marginTop: 50,
     },
     text: {
         color: "#9999AA",
@@ -142,7 +129,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: "100%",
-        paddingVertical: 50,
+        paddingVertical: 25,
         paddingHorizontal: 30,
         alignItems: "center",
         backgroundColor: "#FFF",

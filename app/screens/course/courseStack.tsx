@@ -21,19 +21,26 @@ const CourseStack = () => {
                 },
             }}
         >
-            <Course.Screen name="Java" component={IndividualCourse} />
-            <Course.Screen name="Lesson" component={Lesson} />
             <Course.Screen
                 name="CourseHome"
                 component={CourseHome}
                 options={{ title: "Course" }}
             />
             <Course.Screen
+                name="Java"
+                component={IndividualCourse}
+                options={{ title: "Course Detail" }}
+            />
+            <Course.Screen name="Lesson" component={Lesson} />
+            <Course.Screen
                 name="CompetitionHome"
                 component={CompetitionHome}
                 options={{ title: "Competition" }}
             />
-            <Course.Screen name="CompetitionScreen" component={CompetitionScreen}/>
+            <Course.Screen
+                name="CompetitionScreen"
+                component={CompetitionScreen}
+            />
         </Course.Navigator>
     );
 };

@@ -15,38 +15,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                 },
             ]}
         >
-            <TouchableOpacity
-                style={{
-                    alignSelf: "flex-start",
-                    borderRadius: 20,
-                    width: 44,
-                    height: 44,
-                    backgroundColor: "#A5A5A5",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: 60,
-                    marginLeft: 33,
-                }}
-                onPress={() => navigation.pop()}
-            >
-                <Icon
-                    name="arrow-back-outline"
-                    type="ionicon"
-                    color="white"
-                    size={30}
-                />
-            </TouchableOpacity>
             <View style={styles.container}>
-                <View
-                    style={{ justifyContent: "center", alignItems: "center" }}
-                >
-                    <Text
-                        style={{ fontFamily: "Poppins-SemiBold", fontSize: 21 }}
-                    >
-                        Course Detail
-                    </Text>
-                </View>
-
                 <Image
                     source={require("../../../assets/home/java.jpg")}
                     style={styles.image}

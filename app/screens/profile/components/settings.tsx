@@ -7,10 +7,10 @@ import {
     ScrollView,
 } from "react-native";
 
-import { MAIN_THEME } from "../../common/constants";
+import { MAIN_THEME } from "../../../common/constants";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { TScreenProp } from "../types";
-import Button from "../../common/components/button";
+import { TScreenProp } from "../../types";
+import Button from "../../../common/components/button";
 
 export const Card = (props: any) => {
     const styles = StyleSheet.create({
@@ -72,18 +72,6 @@ export const Card = (props: any) => {
 function SettingsPage({ navigation }: TScreenProp) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.title}>
-                <Icon
-                    name="arrow-left"
-                    size={20}
-                    style={{ position: "absolute", left: 0 }}
-                    onPress={() => navigation.pop()}
-                />
-                <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
-                    Settings
-                </Text>
-            </View>
-
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.subContainer}>
                     <Text style={styles.subHeader}>Account</Text>
@@ -187,7 +175,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: "100%",
-        paddingVertical: 50,
+        paddingVertical: 25,
         paddingHorizontal: 30,
         alignItems: "center",
         backgroundColor: "#FFF",

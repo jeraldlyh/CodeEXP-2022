@@ -1,29 +1,17 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Text, Image } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { MAIN_THEME } from "../../common/constants";
-import { TScreenProp } from "../types";
+import { MAIN_THEME } from "../../../common/constants";
+import { TScreenProp } from "../../types";
 import { Card } from "./settings";
 
 function ProfilePage({ navigation }: TScreenProp) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.title}>
-                <Icon
-                    name="arrow-left"
-                    size={20}
-                    style={{ position: "absolute", left: 0 }}
-                    onPress={() => navigation.pop()}
-                />
-                <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
-                    Profile
-                </Text>
-            </View>
-
             <View style={styles.summaryContainer}>
                 <View style={{ width: "35%" }}>
                     <Image
-                        source={require("../../assets/profile-photo.jpg")}
+                        source={require("../../../assets/profile-photo.jpg")}
                         style={{ height: 90, width: 90, borderRadius: 14 }}
                         resizeMode="cover"
                     />
@@ -38,7 +26,7 @@ function ProfilePage({ navigation }: TScreenProp) {
                         <Text style={styles.name}>John Doe</Text>
                         <View style={styles.pointsContainer}>
                             <Image
-                                source={require("../../assets/coin.png")}
+                                source={require("../../../assets/coin.png")}
                                 style={{
                                     height: 20,
                                     width: 20,
@@ -79,7 +67,7 @@ function ProfilePage({ navigation }: TScreenProp) {
                 <Card
                     text="Settings"
                     icon="cog"
-                    onPress={() => console.log("")}
+                    onPress={() => navigation.push("Settings")}
                 />
             </View>
         </ScrollView>
@@ -89,7 +77,7 @@ function ProfilePage({ navigation }: TScreenProp) {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        paddingVertical: 50,
+        paddingVertical: 10,
         paddingHorizontal: 30,
         alignItems: "center",
         backgroundColor: "#FFF",
