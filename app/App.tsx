@@ -38,7 +38,14 @@ export default function App() {
         <SafeAreaProvider>
             {isLoaded ? (
                 <ModalProvider>
-                    <SWRConfig value={{ fetcher }}>
+                    <SWRConfig
+                        value={{
+                            fetcher,
+                            onError: (error, key) => {
+                                console.log(JSON.stringify(error))
+                            },
+                        }}
+                    >
                         <AuthProvider>
                             <NavigationContainer>
                                 <RootStack />

@@ -5,21 +5,27 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { cybersecurityImage } from "../../../../assets/courses";
 import Card from "../../../../common/components/card";
 import { MAIN_THEME } from "../../../../common/constants";
+import { TCompetition } from "../../../../hooks/useCompetition";
 import { useProfile } from "../../../../hooks/useProfile";
 import { CompetitionService } from "../../../../services/competition";
 
-type TCompetitionProps = {
+type TCompetitionProps = Pick<TCompetition, "quiz" | "host"> & {
     title: string;
     amount: string;
     competitionId: string;
+    navigation: any;
 };
 
-type TCompetitionBodyProps = Pick<
-    TCompetitionProps,
-    "amount" | "competitionId"
->;
+type TCompetitionBodyProps = TCompetitionProps;
 
-const CompetitionBody = ({ amount, competitionId }: TCompetitionBodyProps) => {
+const CompetitionBody = ({
+    amount,
+    competitionId,
+    navigation,
+    quiz,
+    title,
+    host,
+}: TCompetitionBodyProps) => {
     const { data, loading } = useProfile();
 
     if (loading) {
@@ -27,7 +33,14 @@ const CompetitionBody = ({ amount, competitionId }: TCompetitionBodyProps) => {
     }
 
     const handleJoin = async (id: string) => {
-        const result = await CompetitionService.joinCompetition(id);
+        await CompetitionService.joinCompetition(id);
+        navigation.push("CompetitionQuestion", {
+            question: quiz.question,
+            amount,
+            title,
+            setter: host.name,
+            options: quiz.options,
+        });
     };
 
     return (
@@ -66,14 +79,21 @@ const CompetitionCard = ({
     title,
     amount,
     competitionId,
+    navigation,
+    quiz,
+    host,
 }: TCompetitionProps) => {
     return (
         <Card
             title={title}
             body={
                 <CompetitionBody
+                    title={title}
                     amount={amount}
                     competitionId={competitionId}
+                    navigation={navigation}
+                    quiz={quiz}
+                    host={host}
                 />
             }
             imageSrc={cybersecurityImage}

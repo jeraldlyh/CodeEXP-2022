@@ -6,7 +6,7 @@ const createCompetition = async (competition: TCompetition) => {
 };
 
 const joinCompetition = async (id: string) => {
-    return await axiosInstance.post("/competition", id);
+    return await axiosInstance.post("/competition/join", {id:id});
 };
 
 export const CompetitionService = {

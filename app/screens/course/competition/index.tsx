@@ -14,10 +14,7 @@ type TCreateNewButtonProps = {
 
 const CreateNewButton = ({ handlePress }: TCreateNewButtonProps) => {
     return (
-        <TouchableOpacity
-            style={styles.newBattleButton}
-            onPress={handlePress}
-        >
+        <TouchableOpacity style={styles.newBattleButton} onPress={handlePress}>
             <Icon name="add-outline" type="ionicon" color="#888888" />
             <Text style={styles.newBattleButtonText}>Create new battle</Text>
         </TouchableOpacity>
@@ -37,6 +34,7 @@ const CompetitionHome = ({ navigation }: TScreenProp) => {
         <Container>
             <CompetitionTab
                 actionButton={<CreateNewButton handlePress={handlePress} />}
+                navigation={navigation}
             />
         </Container>
     );
