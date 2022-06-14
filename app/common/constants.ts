@@ -5,5 +5,10 @@ export const MAIN_THEME = {
     },
     FONT_SIZE: {
         SUB_TITLE: 20
+    },
+    SHADOW: {
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
     }
 };

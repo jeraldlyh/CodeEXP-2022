@@ -9,7 +9,7 @@ const CourseStack = () => {
     return (
         <Course.Navigator screenOptions={{ headerShown: false }}>
             <Course.Screen name="CourseHome" component={CourseHome} />
-            <Course.Screen name="CompetitionHome" component={CompetitionHome} />
+            <Course.Screen name="CompetitionHome" component={CompetitionHome} options={{title:"Competition"}}/>
         </Course.Navigator>
     );
 };

@@ -1,15 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
-import { View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View,TouchableOpacity } from "react-native";
 import { Icon } from "@rneui/base";
 
 type TBackButtonProps = {
     style?: any;
+    navigation: any;
 };
 
-const BackButton = ({ style }: TBackButtonProps) => {
-    const navigation = useNavigation();
-
+const BackButton = ({ style, navigation }: TBackButtonProps) => {
     return (
         <View style={style}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
