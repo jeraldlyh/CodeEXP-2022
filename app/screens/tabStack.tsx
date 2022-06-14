@@ -9,6 +9,8 @@ import Header from "../common/components/header";
 const Tab = createBottomTabNavigator();
 
 const TabStack = () => {
+    const WHITELIST_ROUTES = ["Home"];
+
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
@@ -38,7 +40,10 @@ const TabStack = () => {
                 header: ({ navigation, route, options }) => {
                     const title = getHeaderTitle(options, route.name);
 
-                    return <Header navigation={navigation} title={title} />;
+                    if (WHITELIST_ROUTES.includes(title)) {
+                        return <Header navigation={navigation} title={title} />;
+                    }
+                    return null;
                 },
             })}
         >

@@ -13,7 +13,6 @@ const Header = ({ title, navigation }: THeaderProps) => {
     const navigationState = useNavigationState(state => state.index);
 
     useEffect(() => {
-        console.log(navigation);
         if (navigation.canGoBack()) {
             setCanGoBack(true);
         } else {

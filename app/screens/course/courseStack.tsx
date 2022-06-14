@@ -1,15 +1,33 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { TScreenProp } from "../types";
+import { getHeaderTitle } from "@react-navigation/elements";
 import CompetitionHome from "./competition";
 import CourseHome from "./courseHome";
+import Header from "../../common/components/header";
 
 const Course = createStackNavigator();
 
 const CourseStack = () => {
     return (
-        <Course.Navigator screenOptions={{ headerShown: false }}>
-            <Course.Screen name="CourseHome" component={CourseHome} />
-            <Course.Screen name="CompetitionHome" component={CompetitionHome} options={{title:"Competition"}}/>
+        <Course.Navigator
+            screenOptions={{
+                headerShown: true,
+                header: ({ navigation, route, options }) => {
+                    const title = getHeaderTitle(options, route.name);
+
+                    return <Header navigation={navigation} title={title} />;
+                },
+            }}
+        >
+            <Course.Screen
+                name="CourseHome"
+                component={CourseHome}
+                options={{ title: "Course" }}
+            />
+            <Course.Screen
+                name="CompetitionHome"
+                component={CompetitionHome}
+                options={{ title: "Competition" }}
+            />
         </Course.Navigator>
     );
 };
