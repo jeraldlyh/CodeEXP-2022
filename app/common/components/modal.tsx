@@ -8,13 +8,16 @@ import {
 import { BlurView } from "expo-blur";
 import { TModalProp } from "../../screens/course/competition/types";
 
-const Modal = ({ body }: TModalProp) => {
+const Modal = ({ body, handleDismiss }: TModalProp) => {
+    const handlePress = () => {
+        console.log("pressing")
+        Keyboard.dismiss();
+        handleDismiss();
+    };
+
     return (
         <BlurView intensity={95} tint="light" style={styles.modalBackground}>
-            <TouchableWithoutFeedback
-                onPress={Keyboard.dismiss}
-                accessible={false}
-            >
+            <TouchableWithoutFeedback onPress={handlePress} accessible={false}>
                 <Fragment>{body}</Fragment>
             </TouchableWithoutFeedback>
         </BlurView>
@@ -22,7 +25,6 @@ const Modal = ({ body }: TModalProp) => {
 };
 const styles = StyleSheet.create({
     modalBackground: {
-        position: "absolute",
         height: Dimensions.get("window").height,
         width: Dimensions.get("window").width,
         alignItems: "center",
