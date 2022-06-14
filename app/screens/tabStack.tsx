@@ -25,7 +25,7 @@ const TabStack = () => {
                         iconName = focused ? "home" : "home-outline";
                     } else if (route.name === "Courses") {
                         iconName = focused ? "clipboard" : "clipboard-outline";
-                    } else if (route.name === "Notifications") {
+                    } else if (route.name === "Notif") {
                         iconName = focused
                             ? "notifications"
                             : "notifications-outline";

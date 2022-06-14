@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: "100%",
         borderRadius: 16,
+        shadowColor: "#000000",
+
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 3,
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         padding: 16,
         alignItems: "flex-start",
-        justifyContent:"space-between",
+        justifyContent: "space-between",
         minWidth: 210,
         maxWidth: 210,
     },

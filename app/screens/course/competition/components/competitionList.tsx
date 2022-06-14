@@ -20,17 +20,17 @@ const CompetitionList = ({
     const { data: competitionData, loading } = useCompetition();
     const [availableCompetitions, setAvailableCompetitions] = useState<any>();
 
-    if (loading) {
-        return <Text>Loading data...</Text>;
-    }
-
     useEffect(() => {
         if (competitionData) {
             setAvailableCompetitions(
                 competitionData.filter((data) => data.difficulty === difficulty)
             );
         }
-    }, []);
+    }, [competitionData]);
+
+    if (loading) {
+        return <Text>Loading data...</Text>;
+    }
 
     return (
         <Fragment>
@@ -38,9 +38,10 @@ const CompetitionList = ({
             <Space />
             {availableCompetitions && availableCompetitions.length > 0 ? (
                 <ScrollView>
-                    {availableCompetitions.map((data, index) => (
+                    {availableCompetitions.map((data: any, index: number) => (
                         <Fragment key={index}>
                             <CompetitionCard
+                                competitionId={data.id}
                                 title={data.course}
                                 amount={data.amount}
                             />

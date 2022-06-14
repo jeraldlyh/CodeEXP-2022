@@ -3,7 +3,6 @@ import { getHeaderTitle } from "@react-navigation/elements";
 import CompetitionHome from "./competition";
 import CourseHome from "./courseHome";
 import Header from "../../common/components/header";
-import CompetitionScreen from "./competition/components/competitionScreen";
 import IndividualCourse from "./detail/individualCourse";
 import Lesson from "./detail/lesson";
 
@@ -36,10 +35,6 @@ const CourseStack = () => {
                 name="CompetitionHome"
                 component={CompetitionHome}
                 options={{ title: "Competition" }}
-            />
-            <Course.Screen
-                name="CompetitionScreen"
-                component={CompetitionScreen}
             />
         </Course.Navigator>
     );
