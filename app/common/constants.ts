@@ -12,3 +12,19 @@ export const MAIN_THEME = {
         shadowRadius: 3,
     }
 };
+
+export const CATEGORY_DATA = [
+    {
+        category: "Signals",
+        icon: "signal",
+        color: "red",
+        type: "font-awesome",
+    },
+    { category: "Armour", icon: "car", type: "font-awesome" },
+    {
+        category: "Guards",
+        icon: "dingding",
+        color: "green",
+        type: "ant-design",
+    },
+];

@@ -1,23 +1,9 @@
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { Icon } from "@rneui/base";
-import { MAIN_THEME } from "../../../../common/constants";
+import { CATEGORY_DATA, MAIN_THEME } from "../../../../common/constants";
 
 const Categories = () => {
-    const CATEGORY_DATA = [
-        {
-            category: "Signals",
-            icon: "signal",
-            color: "red",
-            type: "font-awesome",
-        },
-        { category: "Armour", icon: "car", type: "font-awesome" },
-        {
-            category: "Guards",
-            icon: "dingding",
-            color: "green",
-            type: "ant-design",
-        },
-    ];
+    
 
     return (
         <View style={styles.categoryContainer}>
