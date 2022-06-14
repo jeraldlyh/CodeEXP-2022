@@ -5,6 +5,7 @@ import { getHeaderTitle } from "@react-navigation/elements";
 import HomeStack from "./home/homeStack";
 import Header from "../common/components/header";
 import CourseStack from "./course/courseStack";
+import ProfileStack from "./profile/profileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -49,6 +50,7 @@ const TabStack = () => {
         >
             <Tab.Screen name="Home" component={HomeStack} />
             <Tab.Screen name="Courses" component={CourseStack} />
+            <Tab.Screen name="Profile" component={ProfileStack} />
         </Tab.Navigator>
     );
 };

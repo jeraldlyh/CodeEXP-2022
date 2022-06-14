@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import {
     View,
     StyleSheet,
-    Button,
     Text,
     Image,
     ScrollView,
     TouchableOpacity,
 } from "react-native";
 import { Video } from "expo-av";
-import { Icon, Tab } from "@rneui/base";
+import { Icon } from "@rneui/base";
 import { TScreenProp } from "../../types";
 import QandACard from "./components/QandACard";
+import Tab from "./components/tab";
 
 const Lesson = ({ navigation }: TScreenProp) => {
     const pythonVid = require("../../../assets/pythontutorial.mp4");
