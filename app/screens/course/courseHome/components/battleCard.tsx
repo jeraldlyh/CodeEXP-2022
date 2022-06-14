@@ -1,13 +1,17 @@
 import { StyleSheet, View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MAIN_THEME } from "../../../../common/constants";
+import { TScreenProp } from "../../../types";
 
-const BattleCard = () => {
+const BattleCard = ({ navigation }: TScreenProp) => {
     return (
         <View style={styles.competeBox}>
             <View style={styles.titleContainer}>
                 <Text style={styles.titleText}>Compete and earn points</Text>
-                <TouchableOpacity style={styles.battleButton}>
+                <TouchableOpacity
+                    style={styles.battleButton}
+                    onPress={() => navigation.push("CompetitionHome")}
+                >
                     <Text style={styles.battleButtonText}>Join battles</Text>
                 </TouchableOpacity>
             </View>
