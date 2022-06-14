@@ -15,7 +15,10 @@ const Card = ({ title, body, imageSrc }: TCardProps) => {
                 <Text style={styles.cardTitle}>{title}</Text>
                 {body}
             </View>
-            <Image source={imageSrc} style={{ alignSelf: "flex-end" }} />
+            <Image
+                source={imageSrc}
+                style={{ alignSelf: "flex-end", height: "100%" }}
+            />
         </View>
     );
 };
@@ -27,7 +30,6 @@ const styles = StyleSheet.create({
         width: "100%",
         borderRadius: 16,
         shadowColor: "#000000",
-
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 3,
