@@ -11,6 +11,7 @@ export class UsersController {
 
     @Get("/")
     async getProfile(@User() user: TUserJwtDetails) {
+        console.log("hitting");
         return await this.usersService.findOne(user.username);
     }
 }

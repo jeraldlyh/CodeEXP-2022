@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         padding: 16,
         alignItems: "flex-start",
+        justifyContent:"space-between",
         minWidth: 210,
         maxWidth: 210,
     },

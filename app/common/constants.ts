@@ -10,7 +10,8 @@ export const MAIN_THEME = {
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.1,
         shadowRadius: 3,
-    }
+    },
+    ACCENTS: ["#2D99B9", "#7C82A0", "#009633"]
 };
 
 export const CATEGORY_DATA = [

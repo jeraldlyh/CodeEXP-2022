@@ -1,3 +1,9 @@
+export type TQuiz = {
+    question: string;
+    options: string[];
+    answer: string;
+};
+
 export const COMPETITION_MOCK_DATA = {
     Signals: [
         {

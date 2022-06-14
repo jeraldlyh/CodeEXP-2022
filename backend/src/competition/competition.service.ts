@@ -2,15 +2,20 @@ import { Injectable } from "@nestjs/common";
 import { CompetitionRepository } from "src/competition/competition.repository";
 import { CreateCompetitionDto } from "src/competition/dto/create-competition.dto";
 import { sample } from "lodash";
-import { COMPETITION_MOCK_DATA } from "src/competition/competition.mock";
+import { COMPETITION_MOCK_DATA, TQuiz } from "src/competition/competition.mock";
 import { User } from "src/users/user.decorator";
 import { UsersService } from "src/users/users.service";
+import { Competition } from "src/competition/competition.model";
 
 @Injectable()
 export class CompetitionService {
     constructor(readonly usersService: UsersService, readonly competitionRepository: CompetitionRepository) {}
 
-    async create(@User() user, createCompetitionDto: CreateCompetitionDto) {
+    async findAll(): Promise<Competition[]> {
+        return await this.competitionRepository.findAll();
+    }
+
+    async create(@User() user, createCompetitionDto: CreateCompetitionDto): Promise<{ docId: string } & TQuiz> {
         const quiz = this.getRandomQuiz(createCompetitionDto.course);
         const userProfile = await this.usersService.findOne(user.username);
 
@@ -45,7 +50,7 @@ export class CompetitionService {
         };
     }
 
-    getRandomQuiz(course: string) {
+    getRandomQuiz(course: string): TQuiz {
         return sample(COMPETITION_MOCK_DATA[course]);
     }
 }

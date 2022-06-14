@@ -24,7 +24,7 @@ export class Competition {
         },
         readonly isValid: boolean,
         readonly isStarted: boolean,
-        readonly amount: number,
+        readonly amount: string,
         readonly course: string,
         readonly difficulty: Difficulty,
     ) {}

@@ -6,6 +6,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import RootStack from "./screens/rootStack";
 import { AuthProvider } from "./providers/auth";
 import { ModalProvider } from "./providers/modal";
+import { SWRConfig } from "swr";
+import axiosInstance from "./axios";
+
+const fetcher = async (endpoint: string) => {
+    const response = await axiosInstance.get(endpoint);
+
+    return response.data;
+};
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -21,6 +29,7 @@ export default function App() {
             "Poppins-Bold": require("./assets/fonts/Poppins-Bold.ttf"),
             "Poppins-ExtraBold": require("./assets/fonts/Poppins-ExtraBold.ttf"),
             "Poppins-Thin": require("./assets/fonts/Poppins-Thin.ttf"),
+            "Poppins-Light": require("./assets/fonts/Poppins-Light.ttf"),
         });
         setIsLoaded(true);
     };
@@ -29,11 +38,13 @@ export default function App() {
         <SafeAreaProvider>
             {isLoaded ? (
                 <ModalProvider>
-                    <AuthProvider>
-                        <NavigationContainer>
-                            <RootStack />
-                        </NavigationContainer>
-                    </AuthProvider>
+                    <SWRConfig value={{ fetcher }}>
+                        <AuthProvider>
+                            <NavigationContainer>
+                                <RootStack />
+                            </NavigationContainer>
+                        </AuthProvider>
+                    </SWRConfig>
                 </ModalProvider>
             ) : (
                 <View>

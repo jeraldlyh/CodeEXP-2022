@@ -4,11 +4,10 @@ import {
     Text,
     TouchableOpacity,
     TextInput,
-    Keyboard,
 } from "react-native";
 import { Icon } from "@rneui/base";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CATEGORY_DATA, MAIN_THEME } from "../../../../common/constants";
 import { useModal } from "../../../../providers/modal";
 import Button from "../../../../common/components/button";
@@ -35,10 +34,6 @@ const CreateCompetitionModalBody = () => {
 
     const [amount, setAmount] = useState<string>("");
 
-    useEffect(() => {
-        console.log(selectedCourse, selectedDifficulty, amount);
-    }, [selectedCourse, selectedDifficulty, amount]);
-
     const handlePress = async () => {
         if (selectedDifficulty && selectedCourse && amount) {
             await CompetitionService.createCompetition({
@@ -47,6 +42,7 @@ const CreateCompetitionModalBody = () => {
                 amount: amount,
             });
         }
+        setIsOpen(false);
     };
 
     return (
