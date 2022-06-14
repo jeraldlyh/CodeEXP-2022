@@ -12,10 +12,10 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { TScreenProp } from "../types";
 import Button from "../../common/components/button";
 
-const SettingOption = (props: any) => {
+export const Card = (props: any) => {
   const styles = StyleSheet.create({
     container: {
-      height: 56,
+      height: 64,
       flexDirection: "row",
       width: 350,
       borderRadius: 14,
@@ -30,7 +30,7 @@ const SettingOption = (props: any) => {
       backgroundColor: "#F9F9F9",
     },
     text: {
-      fontSize: 15,
+      fontSize: 15.5,
       color: "#091F44",
       fontFamily: "Poppins-Normal",
     },
@@ -38,16 +38,24 @@ const SettingOption = (props: any) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
-      <View style={{ width: "15%", marginLeft: 8 }}>
+      <View style={{ width: "10%", marginLeft: 6 }}>
         <Icon name={props.icon} size={25} color={MAIN_THEME_COLOR.GREEN} />
       </View>
       <View
         style={{
           justifyContent: "flex-start",
-          width: "85%",
+          width: "78%",
         }}
       >
         <Text style={styles.text}> {props.text}</Text>
+      </View>
+      <View
+        style={{
+          justifyContent: "flex-start",
+          width: "7%",
+        }}
+      >
+        <Icon name="chevron-right" size={25} color={MAIN_THEME_COLOR.GREEN} />
       </View>
     </TouchableOpacity>
   );
@@ -63,7 +71,7 @@ function SettingsPage({ navigation }: TScreenProp) {
           style={{ position: "absolute", left: 0 }}
           onPress={() => navigation.pop()}
         />
-        <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25}}>
+        <Text style={{ fontFamily: "Poppins-SemiBold", fontSize: 25 }}>
           Settings
         </Text>
       </View>
@@ -71,17 +79,17 @@ function SettingsPage({ navigation }: TScreenProp) {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.subContainer}>
           <Text style={styles.subHeader}>Account</Text>
-          <SettingOption
+          <Card
             text="Set Two-Factor Authentication"
             icon="lock-outline"
             onPress={() => console.log("")}
           />
-          <SettingOption
+          <Card
             text="Language"
             icon="translate"
             onPress={() => console.log("")}
           />
-          <SettingOption
+          <Card
             text="Font Size"
             icon="format-size"
             onPress={() => console.log("")}
@@ -90,7 +98,7 @@ function SettingsPage({ navigation }: TScreenProp) {
 
         <View style={styles.subContainer}>
           <Text style={styles.subHeader}>Notifications</Text>
-          <SettingOption
+          <Card
             text="Notification Settings"
             icon="bell-outline"
             onPress={() => console.log("")}
@@ -99,17 +107,17 @@ function SettingsPage({ navigation }: TScreenProp) {
 
         <View style={styles.subContainer}>
           <Text style={styles.subHeader}>About</Text>
-          <SettingOption
+          <Card
             text="Terms of Use"
             icon="file-outline"
             onPress={() => console.log("")}
           />
-          <SettingOption
+          <Card
             text="Privacy Policy"
             icon="shield-edit-outline"
             onPress={() => console.log("")}
           />
-          <SettingOption
+          <Card
             text="Report a problem"
             icon="alert-circle-outline"
             onPress={() => console.log("")}
