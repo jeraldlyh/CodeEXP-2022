@@ -1,4 +1,29 @@
 import { Injectable } from "@nestjs/common";
+import firebase from "firebase-admin";
+import { Competition, competitionConverter } from "src/competition/competition.model";
 
 @Injectable()
-export class CompetitionRepository {}
+export class CompetitionRepository {
+    private rootCollection = "Competition";
+
+    async create(dto: any): Promise<string> {
+        const doc = await firebase
+            .firestore()
+            .collection(this.rootCollection)
+            .withConverter(competitionConverter)
+            .add(dto);
+
+        return doc.id;
+    }
+
+    async get(docId: string): Promise<Competition> {
+        const result = await firebase
+            .firestore()
+            .collection(this.rootCollection)
+            .doc(docId)
+            .withConverter(competitionConverter)
+            .get();
+
+        return result.data();
+    }
+}

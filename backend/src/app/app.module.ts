@@ -1,12 +1,13 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { AuthModule } from "src/auth/auth.module";
-import { CompetitionRepository } from "src/competition/competition.repository";
+import { CompetitionModule } from "src/competition/competition.module";
+import { UsersModule } from "src/users/users.module";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
 @Module({
-    imports: [ConfigModule.forRoot({ isGlobal: true }), AuthModule, CompetitionRepository],
+    imports: [ConfigModule.forRoot({ isGlobal: true }), AuthModule, CompetitionModule, UsersModule],
     controllers: [AppController],
     providers: [AppService],
 })
