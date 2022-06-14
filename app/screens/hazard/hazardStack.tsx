@@ -11,8 +11,14 @@ const HazardStack = () => {
     return (
         <Hazard.Navigator screenOptions={{ headerShown: false }}>
             <Hazard.Screen name="HazardHomepage" component={HazardHomepage} />
-            <Hazard.Screen name="SafetyConcern" component={SafetyConcernsPage} />
-            <Hazard.Screen name="HazardReporting" component={HazardReportingPage} />
+            <Hazard.Screen
+                name="SafetyConcern"
+                component={SafetyConcernsPage}
+            />
+            <Hazard.Screen
+                name="HazardReporting"
+                component={HazardReportingPage}
+            />
             <Hazard.Screen name="NearMiss" component={NearMissPage} />
         </Hazard.Navigator>
     );

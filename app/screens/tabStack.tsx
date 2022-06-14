@@ -6,6 +6,8 @@ import HomeStack from "./home/homeStack";
 import Header from "../common/components/header";
 import CourseStack from "./course/courseStack";
 import ProfileStack from "./profile/profileStack";
+import HazardStack from "./hazard/hazardStack";
+import NotificationsStack from "./notifications/notificationsStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,10 +25,12 @@ const TabStack = () => {
                         iconName = focused ? "home" : "home-outline";
                     } else if (route.name === "Courses") {
                         iconName = focused ? "clipboard" : "clipboard-outline";
-                    } else if (route.name === "Notifs") {
+                    } else if (route.name === "Notifications") {
                         iconName = focused
                             ? "notifications"
                             : "notifications-outline";
+                    } else if (route.name === "Hazard") {
+                        iconName = focused ? "skull" : "skull-outline";
                     } else {
                         iconName = focused ? "person" : "person-outline";
                     }
@@ -49,7 +53,9 @@ const TabStack = () => {
             })}
         >
             <Tab.Screen name="Home" component={HomeStack} />
+            <Tab.Screen name="Notifications" component={NotificationsStack} />
             <Tab.Screen name="Courses" component={CourseStack} />
+            <Tab.Screen name="Hazard" component={HazardStack} />
             <Tab.Screen name="Profile" component={ProfileStack} />
         </Tab.Navigator>
     );
