@@ -11,14 +11,7 @@ import { TScreenProp } from "../types";
 const HazardReportingPage = ({ navigation }: TScreenProp) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
+      <View style={styles.title}>
         <Icon
           name="arrow-left"
           size={20}
@@ -87,5 +80,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     alignItems: "center",
     backgroundColor: "#FFF",
+  },
+  title: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
 });
