@@ -61,7 +61,7 @@ const SuggestedCourses = () => {
                                 denominator={course.denominator}
                             />
                         }
-                        imageSrc={cybersecurityImage}
+                        imageSrc={require("../../../../assets/recap-1.jpg")}
                     />
                 ))}
             </ScrollView>

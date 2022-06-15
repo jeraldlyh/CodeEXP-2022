@@ -17,7 +17,11 @@ const Card = ({ title, body, imageSrc }: TCardProps) => {
             </View>
             <Image
                 source={imageSrc}
-                style={{ alignSelf: "flex-end", height: "100%" }}
+                style={{
+                    alignSelf: "flex-end",
+                    height: "100%",
+                    borderRadius: 16,
+                }}
             />
         </View>
     );
@@ -37,6 +41,7 @@ const styles = StyleSheet.create({
         minHeight: 120,
         marginBottom: 10,
         justifyContent: "space-between",
+        overflow: "hidden",
     },
     cardTextContainer: {
         display: "flex",
