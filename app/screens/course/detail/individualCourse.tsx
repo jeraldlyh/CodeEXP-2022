@@ -29,7 +29,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         marginBottom: 10,
                     }}
                 >
-                    THT Handling
+                    Handling a SAR21
                 </Text>
 
                 <View
