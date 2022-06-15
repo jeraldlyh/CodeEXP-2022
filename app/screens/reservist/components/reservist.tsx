@@ -38,7 +38,7 @@ export default function ReservistPage({ navigation }: TScreenProp) {
                             marginBottom: 10,
                         }}
                     >
-                       Auditorium
+                        Auditorium
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -51,9 +51,7 @@ export default function ReservistPage({ navigation }: TScreenProp) {
                 <Text style={{ fontWeight: "bold", fontSize: 17 }}>
                     Reminders
                 </Text>
-                <Text style={{ marginTop: 8 }}>
-                    • Bring fieldpack
-                </Text>
+                <Text style={{ marginTop: 8 }}>• Bring fieldpack</Text>
                 <Text style={{ marginTop: 5 }}>• Report in Smart 4</Text>
                 <Text style={{ marginTop: 5 }}>• Watch recap courses</Text>
             </View>
@@ -105,6 +103,11 @@ export default function ReservistPage({ navigation }: TScreenProp) {
                             display: "flex",
                             justifyContent: "space-between",
                         }}
+                        onPress={() =>
+                            navigation.push("CourseStackRedirect", {
+                                screen: "CourseDetail",
+                            })
+                        }
                     >
                         <View
                             style={{

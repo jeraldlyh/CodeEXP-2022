@@ -27,7 +27,7 @@ const CourseStack = () => {
                 options={{ title: "Course" }}
             />
             <Course.Screen
-                name="Java"
+                name="CourseDetail"
                 component={IndividualCourse}
                 options={{ title: "Course Detail" }}
             />

@@ -29,7 +29,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         marginBottom: 10,
                     }}
                 >
-                    Java for Beginners
+                    THT Handling
                 </Text>
 
                 <View
@@ -94,19 +94,19 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         marginTop: 20,
                     }}
                 >
-                    In this course I’ll show the step-by-step process to
-                    mastering the Java programming langauge. This course is
+                    In this course I’ll show the step-by-step process from
+                    assembling to disassembling the rifle. This course is
                     beginner-friendly so do not worry if you do not have any
-                    prior coding experience.
+                    prior experience.
                 </Text>
 
                 <View style={{ flexDirection: "row" }}>
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.text}>Coding</Text>
+                        <Text style={styles.text}>Gun</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.text}>Development</Text>
+                        <Text style={styles.text}>Technical</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -167,9 +167,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         <Text style={styles.lessonNo}>02</Text>
                         <View>
                             <Text style={styles.timing}>18 mins</Text>
-                            <Text style={styles.title}>
-                                Variables and Strings
-                            </Text>
+                            <Text style={styles.title}>Capabilities of SAF21</Text>
                         </View>
                     </View>
                     <View>
@@ -193,7 +191,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         <View>
                             <Text style={styles.timing}>40 mins</Text>
                             <Text style={styles.title}>
-                                Conditions and Loops
+                                Components of SAR21
                             </Text>
                         </View>
                     </View>
@@ -216,7 +214,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         <Text style={styles.lessonNo}>04</Text>
                         <View>
                             <Text style={styles.timing}>40 mins</Text>
-                            <Text style={styles.title}>1D and 2D Arrays</Text>
+                            <Text style={styles.title}>Assembling the rifle</Text>
                         </View>
                     </View>
                     <View>
@@ -239,9 +237,8 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
                         <View>
                             <Text style={styles.timing}>52 mins</Text>
                             <Text style={styles.title}>
-                                Classes, methods, objects
+                                Disassembling the rifle
                             </Text>
-                            <Text style={styles.title}>and Interfaces</Text>
                         </View>
                     </View>
                     <View>
