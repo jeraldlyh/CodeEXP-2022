@@ -1,4 +1,5 @@
 import { sample } from "lodash";
+import React from "react";
 import { Fragment } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";

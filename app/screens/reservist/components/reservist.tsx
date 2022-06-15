@@ -29,7 +29,7 @@ export default function ReservistPage({ navigation }: TScreenProp) {
                             marginTop: 4,
                         }}
                     >
-                        Add in some location
+                        Kranji Camp
                     </Text>
                     <Text
                         style={{
@@ -38,7 +38,7 @@ export default function ReservistPage({ navigation }: TScreenProp) {
                             marginBottom: 10,
                         }}
                     >
-                        More details on locaion
+                       Auditorium
                     </Text>
                 </View>
             </TouchableOpacity>
@@ -52,10 +52,10 @@ export default function ReservistPage({ navigation }: TScreenProp) {
                     Reminders
                 </Text>
                 <Text style={{ marginTop: 8 }}>
-                    • Some reminders here to prepare before reservist
+                    • Bring fieldpack
                 </Text>
-                <Text style={{ marginTop: 5 }}>• More reminders</Text>
-                <Text style={{ marginTop: 5 }}>• More reminders</Text>
+                <Text style={{ marginTop: 5 }}>• Report in Smart 4</Text>
+                <Text style={{ marginTop: 5 }}>• Watch recap courses</Text>
             </View>
             <Text style={{ fontWeight: "bold", marginTop: 20, fontSize: 17 }}>
                 Recap videos
