@@ -17,7 +17,7 @@ export default function IndividualCourse({ navigation }: TScreenProp) {
         >
             <View style={styles.container}>
                 <Image
-                    source={require("../../../assets/home/java.jpg")}
+                    source={require("../../../assets/recap-1.jpg")}
                     style={styles.image}
                 />
 
