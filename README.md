@@ -1,4 +1,4 @@
-# OneNS
+# oneNS
 
 > By **geekignore**
 > - [Daryl](https://github.com/wongdaryl)
