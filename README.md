@@ -1,4 +1,4 @@
-# EduHome
+# OneNS
 
 > By **geekignore**
 > - [Daryl](https://github.com/wongdaryl)
